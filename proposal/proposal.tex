@@ -1,0 +1,68 @@
+\documentclass{article}
+
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+\usepackage{listings} % For displaying code
+\usepackage{algorithm2e} % pseudo-code
+
+\usepackage[top=0.5in, bottom=1in, left=1in, right=1in]{geometry}
+
+% Answers
+\def\ans#1{\par\gre{Answer: #1}}
+
+% Colors
+\definecolor{blu}{rgb}{0,0,1}
+\def\blu#1{{\color{blu}#1}}
+\definecolor{gre}{rgb}{0,.5,0}
+\def\gre#1{{\color{gre}#1}}
+\definecolor{red}{rgb}{1,0,0}
+\def\red#1{{\color{red}#1}}
+\def\norm#1{\|#1\|}
+
+% Math
+\def\R{\mathbb{R}}
+\def\argmax{\mathop{\rm arg\,max}}
+\newcommand{\argmin}[1]{\mathop{\hbox{argmin}}_{#1}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\alignStar}[1]{\begin{align*}#1\end{align*}}
+\def\half{\frac 1 2}
+\def\cond{\; | \;}
+
+% LaTeX
+\newcommand{\fig}[2]{\includegraphics[width=#1\textwidth]{a2f/#2}}
+\newcommand{\centerfig}[2]{\begin{center}\includegraphics[width=#1\textwidth]{#2}\end{center}}
+\def\items#1{\begin{itemize}#1\end{itemize}}
+\def\enum#1{\begin{enumerate}#1\end{enumerate}}
+
+
+\begin{document}
+
+\title{STAT 520A Project Proposal}
+\author{Naitong Chen (21539151)}
+\date{Feb 9, 2021}
+\maketitle
+
+In this project, we hope to evaluate the performance of two different Markov Chain Monte Carlo (MCMC) methods applied to Bayesian change point detection problems.
+
+Given a sequence of observations, a change point detection algorithm aims to identify one or multiple indices as change points, where the underlining data generating processes are different before and after a given change point. The set of observations between two consecutive change points and/or either end of the entire sequence is called a segment. By assuming that the sequence of observations comes from a family of distributions with its parameters undergoing changes at some unknown points, change points can be detected by comparing the likelihoods of the entire sequence across possible configurations of change point locations.
+
+For this project, we focus on the Bayesian approach of inferencing change points through MCMC sampling from the posterior distribution of the (discrete) change point locations. Specifically, we are interested in the case that a given sequence of normally distributed observations with some shared variance, the underlying mean jumps at change points, but remains constant within a given segment. The MCMC samplers we would like to compare are the Gibbs sampler developed in \cite{carlin1992hierarchical} and the Metropolis-within-Gibbs sampler developed in \cite{antoch2008application}. While the fully Gibbs sampler samples from the conditional distribution of the change point locations, the Metropolis-within-Gibbs sampler avoids computing this potentially expensive distribution by introducing some proposal distribution on the change point locations. 
+
+It is clear that as the number of observations and the number of change points one would like to detect grow, we see an exponential increase in the size of possible configurations of change point locations. We are then interested in examining the tradeoffs between directly computing this potentially expensive conditional distribution and searching over a large space using a proposal distribution that risks a low acceptance rate.
+
+For simplicity, conjugate priors will be used on the means of each segment and the shared variance of the entire sequence. And to explore the consequence of having a large set of possible change point locations, we will simulate sequences of different lengths with different numbers of change points. A set of comparison metrics and experiments to test these metrics will be selected and implemented following the readings on the evaluation of MCMC methods provided in class.
+
+If there are indeed differences in the two samplers' performance in our tests, we will see whether there is an intuitive explanation as in why one sampler outperformed the other in certain cases.
+
+We note that the both the Gibbs and Metropolis-within-Gibbs samplers are relatively basic, and so differences in performance may not be obvious in the change point problem described above. At the same time, a comparion between these two samplers may not be well-motivated as there have been limited extensions that stemmed from them. Another idea would then be comparing two trans-dimensional MCMC algorithms applied to change point problems when the number of change points is unknown. In particular, the two methods I have in mind are Reversible Jump MCMC \cite{green1995reversible} and a product-space based approach \cite{carlin1995bayesian}. In this case the tradeoff would be between explicitly modelling the trans-dimensional character and circumventing this challenging problem by modelling all parameters (across the number of changepoints considered) at the same time.
+\newpage
+\bibliography{sources}
+\bibliographystyle{abbrv}
+\end{document}
