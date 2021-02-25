@@ -10,7 +10,7 @@ from gibbs import gibbs
 from metropolis_within_gibbs import metropolis_within_gibbs
 
 # load data
-M = 2
+M = 3
 n = 50
 sd = 5
 seed = 1
