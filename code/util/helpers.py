@@ -1,6 +1,7 @@
 import numpy as np
 from scipy import stats as stat
 from itertools import combinations
+from numba import jit
 
 """
 samples uniformly a combination of m values from 1 to n
@@ -108,13 +109,17 @@ def sample_gam(seq=None, locations=None, seg_means_new=None,
 """
 computes sequence log likelihood
 """
+@jit(nopython=True)
 def sequence_log_likelihood(seq=None, locations=None, seg_means_new=None, gam_new=None):
     # gam_new**-0.5
     sd = np.exp(-0.5 * np.log(gam_new))
+    var = np.exp(-np.log(gam_new))
     log_likelihood = 0
 
     if locations.shape[0] == 0:
-        log_likelihood = np.sum(stat.norm.logpdf(seq, seg_means_new[0], sd))
+        lognormpdf = -np.log(sd) - 0.5 * np.log(2*np.pi) - (0.5 / var) * np.power(seq - seg_means_new[0], 2) 
+        log_likelihood = np.sum(lognormpdf)
+        # log_likelihood = np.sum(stat.norm.logpdf(seq, seg_means_new[0], sd))
     else:
         for i in range(seg_means_new.shape[0]):
             if i == 0:
@@ -127,22 +132,17 @@ def sequence_log_likelihood(seq=None, locations=None, seg_means_new=None, gam_ne
                 mean = seg_means_new[i]
                 temp = seq[locations[i - 1] + 1: locations[i] + 1]
 
-            log_likelihood = log_likelihood + np.sum(stat.norm.logpdf(temp, mean, sd))
+            lognormpdf = -np.log(sd) - 0.5 * np.log(2*np.pi) - (0.5 / var) * np.power(temp - mean, 2) 
+            sumlognormpdf = np.sum(lognormpdf)
+            log_likelihood = log_likelihood + sumlognormpdf
+            # log_likelihood = log_likelihood + np.sum(stat.norm.logpdf(temp, mean, sd))
     return log_likelihood
 
 """
 samples changepoint locations by computing its conditional distribution
 """
-def sample_locs(seq=None, seg_means=None, gam=None, seed=None):
-    # no need to find combinations with the last observation as it 
-    # won't be a change point
-    combs = combinations(np.arange(seq.shape[0]-1), seg_means.shape[0]-1)
-    combs = np.array(list(combs))
-    probs = np.zeros(combs.shape[0])
-
-    for i in np.arange(combs.shape[0]):
-        # probs[i] = np.exp(sequence_log_likelihood(seq, combs[i], seg_means, gam))
-        probs[i] = sequence_log_likelihood(seq, combs[i], seg_means, gam)
+def sample_locs(seq=None, seg_means=None, gam=None, seed=None, combs=None):
+    probs = compute_probs(combs, seq, seg_means, gam)
     # probs = np.exp(np.log(probs) - np.log(np.sum(probs)))
 
 
@@ -161,3 +161,12 @@ def sample_locs(seq=None, seg_means=None, gam=None, seed=None):
 
     selection = np.random.choice(np.arange(combs.shape[0]), size=1, p=probs_normed)[0]
     return combs[selection,:]
+
+@jit(nopython=True)
+def compute_probs(combs=None, seq=None, seg_means=None, gam=None):
+    probs = np.zeros(combs.shape[0])
+    for i in np.arange(combs.shape[0]):
+        # probs[i] = np.exp(sequence_log_likelihood(seq, combs[i], seg_means, gam))
+        probs[i] = sequence_log_likelihood(seq, combs[i], seg_means, gam)
+        # print(i)
+    return probs

@@ -24,7 +24,8 @@ def metropolis_within_gibbs(seq=None, n_MCMC=None, n=None, M=None,
     seg_means, _ = helpers.compute_seg_means(seq, locs)
     
     # beta is rate param, but np.random.gamma takes scale as input (1 / seg_var)
-    gam = np.random.gamma(alpha, 1/beta)
+    # gam = np.random.gamma(alpha, 1/beta)
+    gam = 1
 
     while sample_seq_var.shape[0] < n_MCMC:
         # proposal
@@ -46,14 +47,15 @@ def metropolis_within_gibbs(seq=None, n_MCMC=None, n=None, M=None,
         
         # sampling the rest parameters using Gibbs
         seg_means_new, _ = helpers.sample_seg_means(seq, locs_new, mus, vs, gam, seed)
-        gam_new = helpers.sample_gam(seq, locs_new, seg_means_new, alpha, beta, seed)
+        # gam_new = helpers.sample_gam(seq, locs_new, seg_means_new, alpha, beta, seed)
+        gam_new = 1
 
         sample_seg_means.append(seg_means_new)
         sample_seq_var = np.hstack([sample_seq_var, np.exp(-np.log(gam_new))])
         seg_means = seg_means_new
         gam = gam_new
 
-        if sample_seq_var.shape[0] % 1000 == 0:
+        if sample_seq_var.shape[0] % 10 == 0:
             print(str(sample_seq_var.shape[0]) + " / " + str(n_MCMC))
     
     accept_prop = accept_count / n_MCMC

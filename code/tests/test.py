@@ -8,17 +8,18 @@ import helpers
 sys.path.insert(1, os.path.join(sys.path[0], '../mcmc_sampler'))
 from gibbs import gibbs
 from metropolis_within_gibbs import metropolis_within_gibbs
+import matplotlib.pyplot as plt
 
 # load data
-M = 3
+M = 4
 n = 50
-sd = 5
+sd = 1
 seed = 1
 file_name = "gaussian_mean_shift" + "_M" + str(M) + "_N" + str(n) + "_seed" + str(seed)
 path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'sequences', file_name))
 seq, locs, seg_means = pk.load(open(path, 'rb'))
 
-n_MCMC = 2000
+n_MCMC = 200
 alpha = 1
 beta = 1
 mus = np.average(seq) * np.ones(M)

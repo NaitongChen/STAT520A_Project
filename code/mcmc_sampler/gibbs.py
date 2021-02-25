@@ -5,6 +5,7 @@ import os
 import sys
 sys.path.insert(1, os.path.join(sys.path[0], '../util'))
 import helpers
+from itertools import combinations
 
 def gibbs(seq=None, n_MCMC=None, n=None, M=None,
         mus=None, vs=None, alpha=None, beta=None, # priors
@@ -23,12 +24,18 @@ def gibbs(seq=None, n_MCMC=None, n=None, M=None,
     seg_means, _ = helpers.compute_seg_means(seq, locs)
     
     # beta is rate param, but np.random.gamma takes scale as input (1 / seg_var)
-    gam = np.random.gamma(alpha, 1/beta)
+    # gam = np.random.gamma(alpha, 1/beta)
+    gam = 1
 
     while sample_seq_var.shape[0] < n_MCMC:
-        locs_new = helpers.sample_locs(seq, seg_means, gam, seed)
+        # no need to find combinations with the last observation as it 
+        # won't be a change point
+        combs = combinations(np.arange(seq.shape[0]-1), seg_means.shape[0]-1)
+        combs = np.array(list(combs))
+        locs_new = helpers.sample_locs(seq, seg_means, gam, seed, combs)
         seg_means_new, _ = helpers.sample_seg_means(seq, locs_new, mus, vs, gam, seed)
-        gam_new = helpers.sample_gam(seq, locs_new, seg_means_new, alpha, beta, seed)
+        # gam_new = helpers.sample_gam(seq, locs_new, seg_means_new, alpha, beta, seed)
+        gam_new = 1
 
         sample_locs.append(locs_new)
         sample_seg_means.append(seg_means_new)
