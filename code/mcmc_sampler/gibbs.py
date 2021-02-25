@@ -11,7 +11,6 @@ def gibbs(seq=None, n_MCMC=None, n=None, M=None,
         mus=None, vs=None, alpha=None, beta=None, # priors
         seed=None):
     # initialization
-    np.random.seed(seed)
     sample_locs = []
     sample_seg_means = []
     sample_seq_var = np.zeros(0)

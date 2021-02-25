@@ -7,7 +7,6 @@ from numba import jit
 samples uniformly a combination of m values from 1 to n
 """
 def sample_combinations(n=None, m=None, seed=None):
-    np.random.seed(seed)
     ret = np.zeros(0)
     for j in np.arange(n-m+1, n+1):
         t = np.random.randint(1, j+1)
@@ -52,7 +51,6 @@ also returns number of observations in each segment
 def sample_seg_means(seq=None, locs_new=None, 
                         mus=None, vs=None, # priors
                         gam=None, seed=None):
-    np.random.seed(seed)
     empirical_means, seg_sizes = compute_seg_means(seq, locs_new)
 
     means = np.zeros(locs_new.shape[0] + 1)
@@ -78,7 +76,6 @@ samples from posterior segment variance
 def sample_gam(seq=None, locations=None, seg_means_new=None,
                 alpha=None, beta=None, # priors
                 seed=None):
-    np.random.seed(seed)
     sum_of_squares = 0
 
     if locations.shape[0] == 0:

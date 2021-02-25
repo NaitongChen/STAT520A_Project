@@ -10,7 +10,6 @@ def metropolis_within_gibbs(seq=None, n_MCMC=None, n=None, M=None,
                             mus=None, vs=None, alpha=None, beta=None, # priors
                             seed=None):
     # initialization
-    np.random.seed(seed)
     accept_count = 0
     sample_locs = []
     sample_seg_means = []

@@ -13,7 +13,7 @@ def generate_gaussian_mean_shift(ks=None, n=None, means=None, sd=None, seed=None
 
     seq = np.zeros(n)
     M = means.shape[0] # number of segments
-    np.random.seed(seed)
+
     if M == 1:
         temp = np.copy(np.random.normal(means[0], sd, seq.shape[0]))
         seq = temp

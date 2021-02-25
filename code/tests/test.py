@@ -11,8 +11,8 @@ from metropolis_within_gibbs import metropolis_within_gibbs
 import matplotlib.pyplot as plt
 
 # load data
-M = 4
-n = 50
+M = 4 # number of segments
+n = 100
 sd = 1
 seed = 1
 file_name = "gaussian_mean_shift" + "_M" + str(M) + "_N" + str(n) + "_seed" + str(seed)
@@ -24,7 +24,7 @@ alpha = 1
 beta = 1
 mus = np.average(seq) * np.ones(M)
 vs = np.ones(M)
-seed = None
+np.random.seed(seed)
 a,b,c,d = metropolis_within_gibbs(seq, n_MCMC, n, M, mus, vs, alpha, beta, seed)
 e,f,g = gibbs(seq, n_MCMC, n, M, mus, vs, alpha, beta, seed)
 
