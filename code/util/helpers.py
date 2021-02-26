@@ -167,3 +167,9 @@ def compute_probs(combs=None, seq=None, seg_means=None, gam=None):
         probs[i] = sequence_log_likelihood(seq, combs[i], seg_means, gam)
         # print(i)
     return probs
+
+def generate_means(diff=None, sd=None, num_seg=None):
+    means = np.zeros(num_seg)
+    for i in np.arange(num_seg):
+        means[i] = np.random.normal(diff * (i+1), sd)
+    return np.sort(means)

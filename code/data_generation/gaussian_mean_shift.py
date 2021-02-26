@@ -2,7 +2,7 @@ import numpy as np
 import pickle as pk
 import os
 
-def generate_gaussian_mean_shift(ks=None, n=None, means=None, sd=None, seed=None):
+def generate_gaussian_mean_shift(ks=None, n=None, means=None, sd=None, seed=None, diff_ind=None):
     # assumes the list of changepoint locations ks are in an increasing order
     # changepoints are stopping times
     if ks.shape[0] != 0:
@@ -29,7 +29,7 @@ def generate_gaussian_mean_shift(ks=None, n=None, means=None, sd=None, seed=None
                 temp = np.copy(np.random.normal(means[i], sd, ks[i]-ks[i-1]))
                 seq[ks[i-1]+1:ks[i]+1] = temp
 
-    file_name = "gaussian_mean_shift" + "_M" + str(M) + "_N" + str(n) + "_seed" + str(seed)
+    file_name = "gaussian_mean_shift" + "_M" + str(M) + "_N" + str(n) + "_seed" + str(seed) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'sequences', file_name))
     fi = open(path, 'wb')
     pk.dump((seq, ks, means), fi)
