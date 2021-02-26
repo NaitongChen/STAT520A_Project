@@ -2,6 +2,10 @@ import numpy as np
 from scipy import stats as stat
 from itertools import combinations
 from numba import jit
+import mcmcse
+import matplotlib.pyplot as plt
+import pickle as pk
+import os
 
 """
 samples uniformly a combination of m values from 1 to n
@@ -22,24 +26,25 @@ def sample_combinations(n=None, m=None, seed=None):
 computes segment means given the sequence and changepoint locations;
 also returns number of observations in each segment
 """
+@jit(nopython=True)
 def compute_seg_means(seq=None, locations=None):
     means = np.zeros(locations.shape[0] + 1)
     sizes = np.zeros(locations.shape[0] + 1)
     if locations.shape[0] == 0:
-        means[0] = np.average(seq)
+        means[0] = np.mean(seq)
         sizes[0] = seq.shape[0]
     else:
         for i in range(means.shape[0]):
             if i == 0:
-                means[i] = np.average(seq[:locations[i] + 1])
+                means[i] = np.mean(seq[:locations[i] + 1])
                 temp = seq[:locations[i] + 1]
                 sizes[i] = temp.shape[0]
             elif i == means.shape[0] - 1:
-                means[i] = np.average(seq[locations[i - 1] + 1:])
+                means[i] = np.mean(seq[locations[i - 1] + 1:])
                 temp = seq[locations[i - 1] + 1:]
                 sizes[i] = temp.shape[0]
             else:
-                means[i] = np.average(seq[locations[i - 1] + 1: locations[i] + 1])
+                means[i] = np.mean(seq[locations[i - 1] + 1: locations[i] + 1])
                 temp = seq[locations[i - 1] + 1: locations[i] + 1]
                 sizes[i] = temp.shape[0]
     return means, sizes
@@ -55,53 +60,25 @@ def sample_seg_means(seq=None, locs_new=None,
 
     means = np.zeros(locs_new.shape[0] + 1)
     for i in range(means.shape[0]):
-        # post_var = (1 / ((1 / vs[i]) + (seg_sizes[i] * gam)))
-        # post_sd = np.sqrt(post_var)
-        # post_mean = ( ((mus[i] / vs[i]) + (gam * empirical_means[i] * seg_sizes[i])) /
-        #                 ((1 / vs[i]) + (seg_sizes[i] * gam)) )
-
-        # using log trick for numerical stability
-        post_var = np.exp(-np.log( np.exp(-np.log(vs[i])) + np.exp(np.log(seg_sizes[i]) + np.log(gam))))
-        post_sd = np.exp(0.5 * np.log(post_var))
-        post_mean = np.exp(np.log(np.exp(np.log(mus[i]) - np.log(vs[i])) + 
-                    np.exp(np.log(gam) + np.log(empirical_means[i]) + np.log(seg_sizes[i]))) + np.log(post_var))
+        post_mean, post_sd = compute_post_mean_dist(vs, seg_sizes, gam, i, mus, empirical_means)
 
         means[i] = np.random.normal(post_mean, post_sd)
 
     return means, seg_sizes
 
-"""
-samples from posterior segment variance
-"""
-def sample_gam(seq=None, locations=None, seg_means_new=None,
-                alpha=None, beta=None, # priors
-                seed=None):
-    sum_of_squares = 0
+@jit(nopython=True)
+def compute_post_mean_dist(vs, seg_sizes, gam, i, mus, empirical_means):
+    # post_var = (1 / ((1 / vs[i]) + (seg_sizes[i] * gam)))
+    # post_sd = np.sqrt(post_var)
+    # post_mean = ( ((mus[i] / vs[i]) + (gam * empirical_means[i] * seg_sizes[i])) /
+    #                 ((1 / vs[i]) + (seg_sizes[i] * gam)) )
 
-    if locations.shape[0] == 0:
-        sum_of_squares = np.sum((seq - seg_means_new[0])**2)
-        # sum_of_squares = np.sum(np.exp(2 * np.log(np.absolute(seq - seg_means_new[0]))))
-    else:
-        for i in range(seg_means_new.shape[0]):
-            if i == 0:
-                mean = seg_means_new[i]
-                temp = seq[:locations[i] + 1]
-            elif i == seg_means_new.shape[0] - 1:
-                mean = seg_means_new[i]
-                temp = seq[locations[i - 1] + 1:]
-            else:
-                mean = seg_means_new[i]
-                temp = seq[locations[i - 1] + 1: locations[i] + 1]
-            
-            seg_sum_of_squares = np.sum((temp - mean)**2)
-            # seg_sum_of_squares = np.sum(np.exp(2 * np.log(np.absolute(temp - mean))))
-            sum_of_squares = sum_of_squares + seg_sum_of_squares
-    
-    alpha_new = alpha + (seq.shape[0] / 2)
-    beta_new = beta + (sum_of_squares / 2)
-    # gam_new = np.random.gamma(alpha_new, 1/beta_new)
-    gam_new = np.random.gamma(alpha_new, np.exp(-np.log(beta_new)))
-    return gam_new
+    # using log trick for numerical stability
+    post_var = np.exp(-np.log( np.exp(-np.log(vs[i])) + np.exp(np.log(seg_sizes[i]) + np.log(gam))))
+    post_sd = np.exp(0.5 * np.log(post_var))
+    post_mean = np.exp(np.log(np.exp(np.log(mus[i]) - np.log(vs[i])) + 
+                np.exp(np.log(gam) + np.log(empirical_means[i]) + np.log(seg_sizes[i]))) + np.log(post_var))
+    return post_mean, post_sd
 
 """
 computes sequence log likelihood
@@ -142,7 +119,6 @@ def sample_locs(seq=None, seg_means=None, gam=None, seed=None, combs=None):
     probs = compute_probs(combs, seq, seg_means, gam)
     # probs = np.exp(np.log(probs) - np.log(np.sum(probs)))
 
-
     # https://stats.stackexchange.com/questions/66616/converting-normalizing-very-small-likelihood-values-to-probability
     probs_shifted = probs - np.min(probs)
     probs_shifted2 = probs_shifted - np.max(probs_shifted)
@@ -173,3 +149,62 @@ def generate_means(diff=None, sd=None, num_seg=None):
     for i in np.arange(num_seg):
         means[i] = np.random.normal(diff * (i+1), sd)
     return np.sort(means)
+
+# @jit(nopython=True)
+def compute_ess(x, every):
+    tot_length = x[::every].shape[0]
+    esses = np.zeros((tot_length, x.shape[1]))
+    ses = np.zeros((tot_length, x.shape[1]))
+    for i in np.arange(tot_length):
+        print(str(i) + "/" + str(tot_length))
+        esses[i,:], ses[i,:] = mcmcse.ess(x[:(i+1)*every, :])
+    return esses, ses
+
+def plot_ess(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
+    # loads data for further investigation
+    file_name = "gaussian_mean_shift" + "_M" + str(M) + "_N" + str(n) + "_seed" + str(i) + "_diffind" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'sequences', file_name))
+    dat = pk.load(open(path, 'rb'))
+    seq = dat[0]
+    true_locs = dat[1]
+    true_means = dat[2]
+
+    # MWG
+    file_name = "MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffint" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
+    MWG = pk.load(open(path, 'rb'))
+
+    locs_mwg = np.array(MWG[0])
+    times_mwg = np.array(MWG[3])
+    times_mwg = np.cumsum(times_mwg)
+    times_every40 = times_mwg[::200]
+
+    acceptance_prob = (MWG[2] * n_MCMC) / locs_mwg.shape[0]
+    ess_MWG, se_MWG = compute_ess(locs_mwg, 200)
+
+    # Gibbs
+    file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffint" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
+    Gibbs = pk.load(open(path, 'rb'))
+
+    locs_gibbs = np.array(Gibbs[0])
+    times_gibbs = np.array(Gibbs[2])
+    times_gibbs = np.cumsum(times_gibbs)
+    times_every20 = times_gibbs[::100]
+
+    ess_Gibbs, se_Gibbs = compute_ess(locs_gibbs, 100)
+
+    plt.plot(times_every40, ess_MWG)
+    plt.plot(times_every20, ess_Gibbs)
+    plt.show()
+
+    plt.plot(times_every40, se_MWG)
+    plt.plot(times_every20, se_Gibbs)
+    plt.yscale("log")
+    plt.show()
+
+    plt.plot(np.unique(locs_mwg[:,0], return_counts=True)[0], np.unique(locs_mwg[:,0], return_counts=True)[1] / locs_mwg.shape[0], 'o')
+    plt.plot(np.unique(locs_gibbs[:,0], return_counts=True)[0], np.unique(locs_gibbs[:,0], return_counts=True)[1] / locs_gibbs.shape[0], 'o')
+    plt.show()
+
+    print("holdup")
