@@ -22,7 +22,7 @@ def metropolis_within_gibbs(seq=None, n_MCMC=None, n=None, M=None,
     # beta is rate param, but np.random.gamma takes scale as input (1 / seg_var)
     # gam = np.random.gamma(alpha, 1/beta)
     gam = 1/(sd**2)
-
+    curr_time = 0
     # while sample_seq_var.shape[0] < n_MCMC:
     while sum(sample_time) < n_MCMC * 60:
         start_time = perf_counter()
@@ -53,8 +53,9 @@ def metropolis_within_gibbs(seq=None, n_MCMC=None, n=None, M=None,
         seg_means = seg_means_new
         sample_time.append(end_time - start_time)
 
-        # if len(sample_time) % 1000 == 0:
-        #     print(sum(sample_time))
+        if sum(sample_time) - curr_time > 5:
+            print(sum(sample_time))
+            curr_time = sum(sample_time)
     
     accept_prop = accept_count / n_MCMC
 

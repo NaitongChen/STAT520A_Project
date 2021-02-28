@@ -147,7 +147,7 @@ def compute_probs(combs=None, seq=None, seg_means=None, gam=None):
 def generate_means(diff=None, sd=None, num_seg=None):
     means = np.zeros(num_seg)
     for i in np.arange(num_seg):
-        means[i] = np.random.normal(diff * (i+1), sd)
+        means[i] = np.random.normal(10, np.sqrt(diff))
     return np.sort(means)
 
 # @jit(nopython=True)

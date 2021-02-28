@@ -28,6 +28,7 @@ def gibbs(seq=None, n_MCMC=None, n=None, M=None,
     combs = combinations(np.arange(seq.shape[0]-1), seg_means.shape[0]-1)
     combs = np.array(list(combs))
 
+    curr_time = 0
     # while sample_seq_var.shape[0] < n_MCMC:
     while np.sum(sample_time) < n_MCMC * 60:
         start_time = perf_counter()
@@ -44,8 +45,9 @@ def gibbs(seq=None, n_MCMC=None, n=None, M=None,
         seg_means = seg_means_new
         sample_time.append(end_time - start_time)
 
-        # if len(sample_time) % 1000 == 0:
-        #     print(sum(sample_time))
+        if sum(sample_time) - curr_time > 5:
+            print(sum(sample_time))
+            curr_time = sum(sample_time)
 
     file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(seed) + "_diffint" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
