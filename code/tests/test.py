@@ -19,54 +19,53 @@ beta = 1
 rep = 1
 seed = 218
 
-# print("1 of 5")
-# n = 50
-# diff_ind = 2
-# means = np.array([2, 4])
-# locs = np.array([25])
-# seq1,_,_ = generate_gaussian_mean_shift(locs, n, means, sd, seed, diff_ind)
+print("1 of 5")
+n = 50
+diff_ind = 2
+means = np.array([2, 4])
+locs = np.array([25])
+seq1,_,_ = generate_gaussian_mean_shift(locs, n, means, sd, seed, diff_ind)
 
-# diff_ind = 5
-# means = np.array([5, 10])
-# locs = np.array([25])
-# seq2,_,_ = generate_gaussian_mean_shift(locs, n, means, sd, seed, diff_ind)
+diff_ind = 5
+means = np.array([5, 10])
+locs = np.array([25])
+seq2,_,_ = generate_gaussian_mean_shift(locs, n, means, sd, seed, diff_ind)
 
-# problem=1
-# for i in np.arange(rep): 
-#     print(i)
-#     np.random.seed(i*problem)
-#     ###### 
-#     # n=50, 1 changepoint, small mean diff, runs for 1 min
-#     ######
-#     diff_ind = 2
-#     M = 2 # number of segments
-#     n_MCMC = 1
-#     mus = np.ones(M) * np.mean(seq1)
-#     vs = np.ones(M)
+problem=1
+for i in np.arange(rep): 
+    print(i)
+    np.random.seed(i*problem)
+    ###### 
+    # n=50, 1 changepoint, small mean diff, runs for 1 min
+    ######
+    diff_ind = 2
+    M = 2 # number of segments
+    n_MCMC = 1
+    mus = np.ones(M) * np.mean(seq1)
+    vs = np.ones(M)
 
-#     # samples M-1 (M=mus.shape[0]) values from 0 to n-2 last index can't be a changepoint
-#     locs = helpers.sample_combinations(n-1, M-1, None) - 1
-#     # intialized using empirical segment means based on the sampled locations
-#     seg_means, _ = helpers.compute_seg_means(seq1, locs)
+    # # samples M-1 (M=mus.shape[0]) values from 0 to n-2 last index can't be a changepoint
+    # locs = helpers.sample_combinations(n-1, M-1, None) - 1
+    # # intialized using empirical segment means based on the sampled locations
+    # seg_means, _ = helpers.compute_seg_means(seq1, locs)
 
-#     a,b,c,d = metropolis_within_gibbs(seq1, n_MCMC, n, M, mus, vs, alpha, beta, i, sd, locs, seg_means, diff_ind)
-#     e,f,g = gibbs(seq1, n_MCMC, n, M, mus, vs, alpha, beta, i, sd, locs, seg_means, diff_ind)
+    # a,b,c,d = metropolis_within_gibbs(seq1, n_MCMC, n, M, mus, vs, alpha, beta, i, sd, locs, seg_means, diff_ind)
+    # e,f,g = gibbs(seq1, n_MCMC, n, M, mus, vs, alpha, beta, i, sd, locs, seg_means, diff_ind)
 
-#     ###### 
-#     # n=50, 1 changepoint, large mean diff, runs for 1 min
-#     ######
-#     diff_ind = 5
-#     mus = np.ones(M) * np.mean(seq2)
-#     vs = np.ones(M)
+    ###### 
+    # n=50, 1 changepoint, large mean diff, runs for 1 min
+    ######
+    diff_ind = 5
+    mus = np.ones(M) * np.mean(seq2)
+    vs = np.ones(M)
 
-#     # samples M-1 (M=mus.shape[0]) values from 0 to n-2 last index can't be a changepoint
-#     locs = helpers.sample_combinations(n-1, M-1, None) - 1
-#     # intialized using empirical segment means based on the sampled locations
-#     seg_means, _ = helpers.compute_seg_means(seq2, locs)
+    # samples M-1 (M=mus.shape[0]) values from 0 to n-2 last index can't be a changepoint
+    locs = helpers.sample_combinations(n-1, M-1, None) - 1
+    # intialized using empirical segment means based on the sampled locations
+    seg_means, _ = helpers.compute_seg_means(seq2, locs)
 
-#     a,b,c,d = metropolis_within_gibbs(seq2, n_MCMC, n, M, mus, vs, alpha, beta, i, sd, locs, seg_means, diff_ind)
-#     e,f,g = gibbs(seq2, n_MCMC, n, M, mus, vs, alpha, beta, i, sd, locs, seg_means, diff_ind)
-#     print("hola")
+    a,b,c,d = metropolis_within_gibbs(seq2, n_MCMC, n, M, mus, vs, alpha, beta, i, sd, locs, seg_means, diff_ind)
+    e,f,g = gibbs(seq2, n_MCMC, n, M, mus, vs, alpha, beta, i, sd, locs, seg_means, diff_ind)
 
 # print("2 of 5")
 # n = 20000
@@ -240,13 +239,13 @@ for i in np.arange(rep):
     mus = np.ones(M) * np.mean(seq1)
     vs = np.ones(M)
 
-    # samples M-1 (M=mus.shape[0]) values from 0 to n-2 last index can't be a changepoint
-    locs = helpers.sample_combinations(n-1, M-1, None) - 1
-    # intialized using empirical segment means based on the sampled locations
-    seg_means, _ = helpers.compute_seg_means(seq1, locs)
+    # # samples M-1 (M=mus.shape[0]) values from 0 to n-2 last index can't be a changepoint
+    # locs = helpers.sample_combinations(n-1, M-1, None) - 1
+    # # intialized using empirical segment means based on the sampled locations
+    # seg_means, _ = helpers.compute_seg_means(seq1, locs)
 
-    a,b,c,d = metropolis_within_gibbs(seq1, n_MCMC, n, M, mus, vs, alpha, beta, i, sd, locs, seg_means, diff_ind)
-    e,f,g = gibbs(seq1, n_MCMC, n, M, mus, vs, alpha, beta, i, sd, locs, seg_means, diff_ind)
+    # a,b,c,d = metropolis_within_gibbs(seq1, n_MCMC, n, M, mus, vs, alpha, beta, i, sd, locs, seg_means, diff_ind)
+    # e,f,g = gibbs(seq1, n_MCMC, n, M, mus, vs, alpha, beta, i, sd, locs, seg_means, diff_ind)
 
     ###### 
     # n=100, 2 changepoints, large mean diff, runs for 3 min

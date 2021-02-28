@@ -27,7 +27,5 @@ n_MCMC = np.array([1, 3, 3, 3, 3])
 diff_ind = np.array([2, 5])
 
 for m in np.arange(M.shape[0]):
-    # for d in np.arange(diff_ind.shape[0]):
-    #     helpers.plot_trace(M[m], n[m], n_MCMC[m], diff_ind[d], i)
-    
-    helpers.plot_trace(M[m], n[m], n_MCMC[m], diff_ind[0], i)
+    for d in np.arange(diff_ind.shape[0]):
+        helpers.process_data(M[m], n[m], n_MCMC[m], diff_ind[d], i)

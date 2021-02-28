@@ -160,15 +160,7 @@ def compute_ess(x, every):
         esses[i,:], ses[i,:] = mcmcse.ess(x[:(i+1)*every, :])
     return esses, ses
 
-def plot_ess(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
-    # loads data for further investigation
-    file_name = "gaussian_mean_shift" + "_M" + str(M) + "_N" + str(n) + "_seed" + str(i) + "_diffind" + str(diff_ind)
-    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'sequences', file_name))
-    dat = pk.load(open(path, 'rb'))
-    seq = dat[0]
-    true_locs = dat[1]
-    true_means = dat[2]
-
+def process_data(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
     # MWG
     file_name = "MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffint" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
@@ -177,10 +169,13 @@ def plot_ess(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
     locs_mwg = np.array(MWG[0])
     times_mwg = np.array(MWG[3])
     times_mwg = np.cumsum(times_mwg)
-    times_every40 = times_mwg[::200]
 
-    acceptance_prob = (MWG[2] * n_MCMC) / locs_mwg.shape[0]
-    ess_MWG, se_MWG = compute_ess(locs_mwg, 200)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name+ "_locs.csv"))
+    np.savetxt(path, locs_mwg, delimiter=",")
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name+ "_cumtime"))
+    fi = open(path, 'wb')
+    pk.dump((times_mwg), fi)
+    fi.close()
 
     # Gibbs
     file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffint" + str(diff_ind)
@@ -190,21 +185,36 @@ def plot_ess(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
     locs_gibbs = np.array(Gibbs[0])
     times_gibbs = np.array(Gibbs[2])
     times_gibbs = np.cumsum(times_gibbs)
-    times_every20 = times_gibbs[::100]
 
-    ess_Gibbs, se_Gibbs = compute_ess(locs_gibbs, 100)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name+ "_locs.csv"))
+    np.savetxt(path, locs_gibbs, delimiter=",")
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name+ "_cumtime"))
+    fi = open(path, 'wb')
+    pk.dump((times_gibbs), fi)
+    fi.close()
 
-    plt.plot(times_every40, ess_MWG)
-    plt.plot(times_every20, ess_Gibbs)
+def plot_trace(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
+    # MWG
+    file_name = "MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffint" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
+    MWG = pk.load(open(path, 'rb'))
+
+    locs_mwg = np.array(MWG[0])
+    times_mwg = np.array(MWG[3])
+    times_mwg = np.cumsum(times_mwg)
+
+    locs_mwg = locs_mwg[locs_mwg.shape[0]-5000:,:]
+    plt.plot(np.arange(locs_mwg.shape[0]), locs_mwg, alpha=0.7, marker='o')
     plt.show()
 
-    plt.plot(times_every40, se_MWG)
-    plt.plot(times_every20, se_Gibbs)
-    plt.yscale("log")
-    plt.show()
+    # Gibbs
+    # file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffint" + str(diff_ind)
+    # path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
+    # Gibbs = pk.load(open(path, 'rb'))
 
-    plt.plot(np.unique(locs_mwg[:,0], return_counts=True)[0], np.unique(locs_mwg[:,0], return_counts=True)[1] / locs_mwg.shape[0], 'o')
-    plt.plot(np.unique(locs_gibbs[:,0], return_counts=True)[0], np.unique(locs_gibbs[:,0], return_counts=True)[1] / locs_gibbs.shape[0], 'o')
-    plt.show()
+    # locs_gibbs = np.array(Gibbs[0])
+    # times_gibbs = np.array(Gibbs[2])
+    # times_gibbs = np.cumsum(times_gibbs)
 
-    print("holdup")
+    # plt.plot(np.arange(locs_gibbs.shape[0]), locs_gibbs)
+    # plt.show()
