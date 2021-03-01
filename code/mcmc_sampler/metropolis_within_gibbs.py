@@ -23,18 +23,17 @@ def metropolis_within_gibbs(seq=None, n_MCMC=None, n=None, M=None,
     # gam = np.random.gamma(alpha, 1/beta)
     gam = 1/(sd**2)
     curr_time = 0
-    # while sample_seq_var.shape[0] < n_MCMC:
     while sum(sample_time) < n_MCMC * 60:
         start_time = perf_counter()
         # proposal
         locs_new = helpers.sample_combinations(n-1, M-1, seed) - 1
-        
+
         # acceptance prob
         log_new = helpers.sequence_log_likelihood(seq, locs_new, seg_means, gam)
         log_old = helpers.sequence_log_likelihood(seq, locs, seg_means, gam)
 
         accept_prob = np.exp(log_new - log_old)
-        unif = np.random.uniform(size=1)
+        unif = np.random.uniform()
 
         if unif <= accept_prob:
             sample_locs.append(locs_new)
@@ -44,10 +43,9 @@ def metropolis_within_gibbs(seq=None, n_MCMC=None, n=None, M=None,
             sample_locs.append(locs)
         
         # sampling the rest parameters using Gibbs
-        seg_means_new, _ = helpers.sample_seg_means(seq, locs_new, mus, vs, gam, seed)
+        seg_means_new, _ = helpers.sample_seg_means(seq, locs, mus, vs, gam, seed)
 
         end_time = perf_counter()
-        # gam_new = helpers.sample_gam(seq, locs_new, seg_means_new, alpha, beta, seed)
 
         sample_seg_means.append(seg_means_new)
         seg_means = seg_means_new
@@ -59,7 +57,7 @@ def metropolis_within_gibbs(seq=None, n_MCMC=None, n=None, M=None,
     
     accept_prop = accept_count / n_MCMC
 
-    file_name = "MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(seed) + "_diffint" + str(diff_ind)
+    file_name = "MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(seed) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
     fi = open(path, 'wb')
     pk.dump((sample_locs, sample_seg_means, accept_prop, sample_time), fi)

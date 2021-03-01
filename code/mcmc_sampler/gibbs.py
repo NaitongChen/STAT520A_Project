@@ -37,7 +37,6 @@ def gibbs(seq=None, n_MCMC=None, n=None, M=None,
         seg_means_new, _ = helpers.sample_seg_means(seq, locs_new, mus, vs, gam, seed)
 
         end_time = perf_counter()
-        # gam_new = helpers.sample_gam(seq, locs_new, seg_means_new, alpha, beta, seed)
 
         sample_locs.append(locs_new)
         sample_seg_means.append(seg_means_new)
@@ -49,7 +48,7 @@ def gibbs(seq=None, n_MCMC=None, n=None, M=None,
             print(sum(sample_time))
             curr_time = sum(sample_time)
 
-    file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(seed) + "_diffint" + str(diff_ind)
+    file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(seed) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
     fi = open(path, 'wb')
     pk.dump((sample_locs, sample_seg_means, sample_time), fi)
