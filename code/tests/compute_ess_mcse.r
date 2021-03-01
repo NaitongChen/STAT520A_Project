@@ -5,31 +5,26 @@ file_names = list.files(pattern="*.csv")
 
 frame_names = data.frame(file_names)
 
-to_store = data.frame(matrix(NA, nrow = length(file_names), ncol = 4))
+to_store = data.frame(matrix(NA, nrow = length(file_names)/2, ncol = 6))
+colnames(to_store) = c("ess first cp", "mcse first cp", 
+                       "ess second cp", "mcse second cp",
+                       "ess third cp", "mcse third cp")
+rownames(to_store) = c("20000c1 Gibbs", "20000c1 MWG",
+                       "50c1 Gibbs", "50c1 MWG",
+                       "100c2 Gibbs", "100c2 MWG",
+                       "100c3 Gibbs", "100c3 MWG",
+                       "60c3 Gibbs", "60c3 MWG")
 
-for (i in 1:length(dat_names)) {
-  dat = read.csv(file_names[i])
-  n = dim(dat)[1]
-  p = dim(dat)[2]
-  to_store[i,1] = tryCatch({
-    multiESS(dat, method="bm")
-  }, error = function(errorCondition){
-    return(NA)
-  })
-  to_store[i,2] = tryCatch({
-    multiESS(dat, method="obm")
-  }, error = function(errorCondition){
-    return(NA)
-  })
-  to_store[i,3] = n^p * det(cov(dat)) / (to_store[i,1]^p)
-  to_store[i,4] = n^p * det(cov(dat)) / (to_store[i,2]^p)
+for (i in 1:(length(file_names)/2)) {
+  if (i %% 2 == 1){
+    dat1 = read.csv(file_names[i])
+    dat2 = read.csv(file_names[i+10])
+    m = dim(dat1)[2]
+    for (j in 1:m) {
+      to_store[i, 2*j - 1] = ess(dat1[,j]) # 1,3,5
+      to_store[i+1, 2*j - 1] = ess(dat2[,j])
+      to_store[i, 2*j] = mcse(dat1[,j])$se # 2,4,6
+      to_store[i+1, 2*j] = mcse(dat2[,j])$se
+    }
+  }
 }
-
-dat = read.csv(file_names[4])
-n = dim(dat)[1]
-show = 5000
-plot((n-show):n, dat[(n-show):n,1])
-
-dat = read.csv(file_names[4])
-n = dim(dat)[1]
-plot(1:n, dat[1:n,1])

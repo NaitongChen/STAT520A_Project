@@ -1,12 +1,12 @@
 import numpy as np
 from scipy import stats as stat
+from scipy.spatial.distance import jensenshannon
 from itertools import combinations
 from numba import jit
 import mcmcse
 import matplotlib.pyplot as plt
 import pickle as pk
 import os
-import pymc
 
 """
 samples uniformly a combination of m values from 1 to n
@@ -409,8 +409,7 @@ def approx_post(locs_MWG, combs):
 
 def compute_kl(post, locs, combs):
     post_approx = approx_post(locs, combs)
-    args = np.argwhere(post_approx != 0)
-    return stat.entropy(post[args], post_approx[args])
+    return jensenshannon(post, post_approx)
 
 def plot_kl(M, n, n_MCMC, diff_ind, i):
     seq,_,_ = get_sequence(M, n, n_MCMC, diff_ind, i)

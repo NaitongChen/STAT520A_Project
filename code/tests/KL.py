@@ -26,10 +26,6 @@ n = np.array([50, 20000, 60, 100, 100])
 n_MCMC = np.array([1, 3, 3, 3, 3])
 diff_ind = np.array([2, 5])
 
-# for m in np.arange(M.shape[0]):
-#     print(m)
-#     helpers.plot_kl(M[m], n[m], n_MCMC[m], diff_ind[0], i)
-
-m = 1
-print(m)
-helpers.plot_kl(M[m], n[m], n_MCMC[m], diff_ind[0], i)
+for m in np.arange(M.shape[0]):
+    print(m)
+    helpers.plot_kl(M[m], n[m], n_MCMC[m], diff_ind[0], i)
