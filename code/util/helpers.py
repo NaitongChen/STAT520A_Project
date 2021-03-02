@@ -85,16 +85,16 @@ def evidences(seq=None, locs_new=None,
 
 @jit(nopython=True)
 def compute_post_mean_dist(vs, seg_sizes, gam, i, mus, empirical_means):
-    # post_var = (1 / ((1 / vs[i]) + (seg_sizes[i] * gam)))
-    # post_sd = np.sqrt(post_var)
-    # post_mean = ( ((mus[i] / vs[i]) + (gam * empirical_means[i] * seg_sizes[i])) /
-    #                 ((1 / vs[i]) + (seg_sizes[i] * gam)) )
+    post_var = (1 / ((1 / vs[i]) + (seg_sizes[i] * gam)))
+    post_sd = np.sqrt(post_var)
+    post_mean = ( ((mus[i] / vs[i]) + (gam * empirical_means[i] * seg_sizes[i])) /
+                    ((1 / vs[i]) + (seg_sizes[i] * gam)) )
 
     # using log trick for numerical stability
-    post_var = np.exp(-np.log( np.exp(-np.log(vs[i])) + np.exp(np.log(seg_sizes[i]) + np.log(gam))))
-    post_sd = np.exp(0.5 * np.log(post_var))
-    post_mean = np.exp(np.log(np.exp(np.log(mus[i]) - np.log(vs[i])) + 
-                np.exp(np.log(gam) + np.log(empirical_means[i]) + np.log(seg_sizes[i]))) + np.log(post_var))
+    # post_var = np.exp(-np.log( np.exp(-np.log(vs[i])) + np.exp(np.log(seg_sizes[i]) + np.log(gam))))
+    # post_sd = np.exp(0.5 * np.log(post_var))
+    # post_mean = np.exp(np.log(np.exp(np.log(mus[i]) - np.log(vs[i])) + 
+    #             np.exp(np.log(gam) + np.log(empirical_means[i]) + np.log(seg_sizes[i]))) + np.log(post_var))
     return post_mean, post_sd
 
 """
@@ -430,27 +430,22 @@ def plot_kl(M, n, n_MCMC, diff_ind, i):
     locs_MWG, times_MWG = get_MWG(M, n, n_MCMC, diff_ind, i)
     locs_Gibbs, times_Gibbs = get_Gibbs(M, n, n_MCMC, diff_ind, i)
 
-    kls_MWG = np.zeros(locs_MWG.shape[0])
-    kls_Gibbs = np.zeros(locs_Gibbs.shape[0])
+    kls_MWG = np.zeros(locs_MWG[::4300].shape[0])
+    kls_Gibbs = np.zeros(locs_Gibbs[::4].shape[0])
+    print(kls_Gibbs.shape[0])
+    # kls_Gibbs = np.zeros(locs_Gibbs.shape[0])
 
-    for i in np.arange(locs_MWG.shape[0]):
-        print(str(i) + "/" + str(locs_MWG.shape[0]))
-        kls_MWG[i] = compute_kl(post, locs_MWG[:i+1], combs)
-    for i in np.arange(locs_Gibbs.shape[0]):
-        print(str(i) + "/" + str(locs_Gibbs.shape[0]))
-        kls_Gibbs[i] = compute_kl(post, locs_Gibbs[:i+1], combs)
-    
-    # for i in np.arange(np.minimum(1000, locs_MWG.shape[0])):
-    #     print(str(i) + "/" + str(locs_MWG.shape[0]))
-    #     kls_MWG[i] = compute_kl(post, locs_MWG[:i+1], combs)
-    # for i in np.arange(np.minimum(1000, locs_Gibbs.shape[0])):
-    #     print(str(i) + "/" + str(locs_Gibbs.shape[0]))
-    #     kls_Gibbs[i] = compute_kl(post, locs_Gibbs[:i+1], combs)
+    for i in np.arange(kls_MWG.shape[0]):
+        print(str(i) + "/" + str(kls_MWG.shape[0]))
+        kls_MWG[i] = compute_kl(post, locs_MWG[:(i+1)*4300], combs)
+    for i in np.arange(kls_Gibbs.shape[0]):
+        print(str(i) + "/" + str(kls_Gibbs.shape[0]))
+        kls_Gibbs[i] = compute_kl(post, locs_Gibbs[:(i+1)*4], combs)
 
-    plt.plot(times_MWG[:np.minimum(1000, locs_MWG.shape[0])+1], kls_MWG[:np.minimum(1000, locs_MWG.shape[0])+1], label="MWG")
-    plt.plot(times_Gibbs[:np.minimum(1000, locs_Gibbs.shape[0])+1], kls_Gibbs[:np.minimum(1000, locs_Gibbs.shape[0])+1], label="Gibbs")
+    plt.plot(times_MWG[::4300], kls_MWG, label="MWG")
+    plt.plot(times_Gibbs[::4], kls_Gibbs, label="Gibbs")
     plt.legend()
-    plt.show()
+    plt.yscale("log")
 
     file_name = "KL" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(0) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'plots', file_name))
