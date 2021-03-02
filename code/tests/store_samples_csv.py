@@ -24,7 +24,7 @@ i = 0
 M = np.array([2, 2, 4, 4, 3])
 n = np.array([50, 20000, 60, 100, 100])
 n_MCMC = np.array([1, 3, 3, 3, 3])
-diff_ind = np.array([2, 5])
+diff_ind = np.array([2])
 
 for m in np.arange(M.shape[0]):
     for d in np.arange(diff_ind.shape[0]):

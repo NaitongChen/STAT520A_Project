@@ -206,7 +206,7 @@ def compute_ess(x, every):
     return esses, ses
 
 def get_MWG(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
-    file_name = "MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffint" + str(diff_ind)
+    file_name = "MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
     MWG = pk.load(open(path, 'rb'))
 
@@ -216,7 +216,7 @@ def get_MWG(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
     return locs_mwg, times_mwg
 
 def get_Gibbs(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
-    file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffint" + str(diff_ind)
+    file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
     Gibbs = pk.load(open(path, 'rb'))
 
@@ -227,7 +227,7 @@ def get_Gibbs(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
 
 def process_data(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
     # MWG
-    file_name = "MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffint" + str(diff_ind)
+    file_name = "MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
     MWG = pk.load(open(path, 'rb'))
 
@@ -243,7 +243,7 @@ def process_data(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
     fi.close()
 
     # Gibbs
-    file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffint" + str(diff_ind)
+    file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
     Gibbs = pk.load(open(path, 'rb'))
 
@@ -260,7 +260,7 @@ def process_data(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
 
 def plot_trace(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
     # MWG
-    file_name = "MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffint" + str(diff_ind)
+    file_name = "MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
     MWG = pk.load(open(path, 'rb'))
 
@@ -270,19 +270,29 @@ def plot_trace(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
 
     # locs_mwg = locs_mwg[locs_mwg.shape[0]-5000:,:]
     plt.plot(np.arange(locs_mwg.shape[0]), locs_mwg, alpha=0.7, marker='o')
-    plt.show()
+    # plt.legend()
 
+    file_name = "Trace_MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(0) + "_diffind" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'plots', file_name))
+    plt.savefig(path)
+    plt.clf()
     # Gibbs
-    # file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffint" + str(diff_ind)
-    # path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
-    # Gibbs = pk.load(open(path, 'rb'))
+    file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffind" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
+    Gibbs = pk.load(open(path, 'rb'))
 
-    # locs_gibbs = np.array(Gibbs[0])
-    # times_gibbs = np.array(Gibbs[2])
-    # times_gibbs = np.cumsum(times_gibbs)
+    locs_gibbs = np.array(Gibbs[0])
+    times_gibbs = np.array(Gibbs[2])
+    times_gibbs = np.cumsum(times_gibbs)
 
-    # plt.plot(np.arange(locs_gibbs.shape[0]), locs_gibbs)
-    # plt.show()
+    plt.plot(np.arange(locs_gibbs.shape[0]), locs_gibbs)
+    # plt.legend()
+
+    file_name = "Trace_Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(0) + "_diffind" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'plots', file_name))
+    plt.savefig(path)
+    plt.clf()
+
 
 def get_sequence(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
     file_name = "gaussian_mean_shift" + "_M" + str(M) + "_N" + str(n) + "_seed" + str(218) + "_diffind" + str(diff_ind)
@@ -372,7 +382,7 @@ def compare_posteriors(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
     plt.plot(np.arange(post.shape[0]), post_MWG, 'o-', alpha=0.7, label="MWG")
     plt.legend()
 
-    file_name = "Posterior" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(0) + "_diffint" + str(diff_ind)
+    file_name = "Posterior" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(0) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'plots', file_name))
     plt.savefig(path)
 
@@ -386,7 +396,7 @@ def plottime(M, n, n_MCMC, diff_ind, i):
     plt.yscale("log")
     plt.legend()
 
-    file_name = "SampleTime" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(0) + "_diffint" + str(diff_ind)
+    file_name = "SampleTime" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(0) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'plots', file_name))
     plt.savefig(path)
 
@@ -423,25 +433,25 @@ def plot_kl(M, n, n_MCMC, diff_ind, i):
     kls_MWG = np.zeros(locs_MWG.shape[0])
     kls_Gibbs = np.zeros(locs_Gibbs.shape[0])
 
-    # for i in np.arange(locs_MWG.shape[0]):
-    #     print(str(i) + "/" + str(locs_MWG.shape[0]))
-    #     kls_MWG[i] = compute_kl(post, locs_MWG[:i+1], combs)
-    # for i in np.arange(locs_Gibbs.shape[0]):
-    #     print(str(i) + "/" + str(locs_Gibbs.shape[0]))
-    #     kls_Gibbs[i] = compute_kl(post, kls_Gibbs[:i+1], combs)
-    
-    for i in np.arange(np.minimum(1000, locs_MWG.shape[0])):
+    for i in np.arange(locs_MWG.shape[0]):
         print(str(i) + "/" + str(locs_MWG.shape[0]))
         kls_MWG[i] = compute_kl(post, locs_MWG[:i+1], combs)
-    for i in np.arange(np.minimum(1000, locs_Gibbs.shape[0])):
+    for i in np.arange(locs_Gibbs.shape[0]):
         print(str(i) + "/" + str(locs_Gibbs.shape[0]))
         kls_Gibbs[i] = compute_kl(post, locs_Gibbs[:i+1], combs)
+    
+    # for i in np.arange(np.minimum(1000, locs_MWG.shape[0])):
+    #     print(str(i) + "/" + str(locs_MWG.shape[0]))
+    #     kls_MWG[i] = compute_kl(post, locs_MWG[:i+1], combs)
+    # for i in np.arange(np.minimum(1000, locs_Gibbs.shape[0])):
+    #     print(str(i) + "/" + str(locs_Gibbs.shape[0]))
+    #     kls_Gibbs[i] = compute_kl(post, locs_Gibbs[:i+1], combs)
 
     plt.plot(times_MWG[:np.minimum(1000, locs_MWG.shape[0])+1], kls_MWG[:np.minimum(1000, locs_MWG.shape[0])+1], label="MWG")
     plt.plot(times_Gibbs[:np.minimum(1000, locs_Gibbs.shape[0])+1], kls_Gibbs[:np.minimum(1000, locs_Gibbs.shape[0])+1], label="Gibbs")
     plt.legend()
     plt.show()
 
-    file_name = "KL" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(0) + "_diffint" + str(diff_ind)
+    file_name = "KL" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(0) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'plots', file_name))
     plt.savefig(path)

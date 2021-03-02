@@ -35,7 +35,7 @@ for i in np.arange(rep):
     ######
     diff_ind = 2
     M = 2 # number of segments
-    n_MCMC = 10000
+    n_MCMC = 1
     mus = np.ones(M) * np.mean(seq1)
     vs = np.ones(M)
 
