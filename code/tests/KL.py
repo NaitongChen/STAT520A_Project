@@ -21,14 +21,13 @@ sd = 1
 alpha = 1
 beta = 1
 rep = 1
-i = 0
+i = np.array([0,1,2,3,4])
 
 M = np.array([2, 2, 4, 4, 3])
 n = np.array([50, 20000, 60, 100, 100])
 n_MCMC = np.array([1, 3, 3, 3, 3])
 diff_ind = np.array([2, 5])
 
-# for m in np.arange(M.shape[0]):
-    # print(m)
-m=3
-helpers.plot_kl(M[m], n[m], n_MCMC[m], diff_ind[0], i)
+for m in np.arange(M.shape[0]):
+    print(m)
+    helpers.plot_kl(M[m], n[m], n_MCMC[m], diff_ind[0], i)

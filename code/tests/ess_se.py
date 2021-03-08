@@ -14,6 +14,8 @@ sys.path.insert(1, os.path.join(sys.path[0], '../data_generation'))
 from gaussian_mean_shift import generate_gaussian_mean_shift
 import matplotlib.pyplot as plt
 
+np.seterr(all='raise')
+
 # params that won't change throughout
 sd = 1
 alpha = 1
@@ -24,9 +26,8 @@ i = np.array([0,1,2,3,4])
 M = np.array([2, 2, 4, 4, 3])
 n = np.array([50, 20000, 60, 100, 100])
 n_MCMC = np.array([1, 3, 3, 3, 3])
+diff_ind = np.array([2, 5])
 
 for m in np.arange(M.shape[0]):
     print(m)
-    for d in i:
-        print(d)
-        helpers.process_data(M[m], n[m], n_MCMC[m], 2, d)
+    helpers.plot_ess_se(M[m], n[m], n_MCMC[m], diff_ind[0], i)

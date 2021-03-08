@@ -19,7 +19,7 @@ sd = 1
 alpha = 1
 beta = 1
 rep = 1
-i = 0
+i = np.array([0,1,2,3,4])
 
 M = np.array([2, 2, 4, 4, 3])
 n = np.array([50, 20000, 60, 100, 100])

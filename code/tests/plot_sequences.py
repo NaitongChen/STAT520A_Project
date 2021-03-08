@@ -24,9 +24,8 @@ i = np.array([0,1,2,3,4])
 M = np.array([2, 2, 4, 4, 3])
 n = np.array([50, 20000, 60, 100, 100])
 n_MCMC = np.array([1, 3, 3, 3, 3])
+diff_ind = np.array([2, 5])
 
 for m in np.arange(M.shape[0]):
     print(m)
-    for d in i:
-        print(d)
-        helpers.process_data(M[m], n[m], n_MCMC[m], 2, d)
+    helpers.plot_sequence(M[m], n[m], n_MCMC[m], diff_ind[0], 218)

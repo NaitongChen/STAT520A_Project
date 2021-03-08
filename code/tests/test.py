@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 sd = 1
 alpha = 1
 beta = 1
-rep = 1
+rep = np.array([1,2,3,4])
 seed = 218
 
 print("1 of 5")
@@ -24,10 +24,10 @@ n = 50
 diff_ind = 2
 means = np.array([2, 4])
 locs = np.array([25])
-seq1,_,_ = generate_gaussian_mean_shift(locs, n, means, sd, seed, diff_ind)
+seq1,_,_ = helpers.get_sequence(2, n, 1, diff_ind, 218)
 
 problem=1
-for i in np.arange(rep): 
+for i in rep: 
     print(i)
     np.random.seed(i*problem)
     ###### 
@@ -52,10 +52,10 @@ n = 20000
 diff_ind = 2
 means = np.array([2, 4])
 locs = np.array([10000])
-seq1,_,_ = generate_gaussian_mean_shift(locs, n, means, sd, seed, diff_ind)
+seq1,_,_ = helpers.get_sequence(2, n, 3, diff_ind, 218)
 
 problem=2
-for i in np.arange(rep): 
+for i in rep: 
     print(i)
     np.random.seed(i*problem)
     ###### 
@@ -80,10 +80,10 @@ n = 60
 diff_ind = 2
 means = np.array([4, 6, 2, 4])
 locs = np.array([15, 30, 45])
-seq1,_,_ = generate_gaussian_mean_shift(locs, n, means, sd, seed, diff_ind)
+seq1,_,_ = helpers.get_sequence(4, n, 3, diff_ind, 218)
 
 problem=3
-for i in np.arange(rep): 
+for i in rep: 
     print(i)
     np.random.seed(i*problem)
     ###### 
@@ -108,10 +108,10 @@ n = 100
 diff_ind = 2
 means = np.array([4, 6, 2, 4])
 locs = np.array([25, 50, 75])
-seq1,_,_ = generate_gaussian_mean_shift(locs, n, means, sd, seed, diff_ind)
+seq1,_,_ = helpers.get_sequence(4, n, 3, diff_ind, 218)
 
 problem=4
-for i in np.arange(rep): 
+for i in rep: 
     print(i)
     np.random.seed(i*problem)
     ###### 
@@ -136,10 +136,10 @@ n = 100
 diff_ind = 2
 means = np.array([4, 6, 2])
 locs = np.array([30, 60])
-seq1,_,_ = generate_gaussian_mean_shift(locs, n, means, sd, seed, diff_ind)
+seq1,_,_ = helpers.get_sequence(3, n, 3, diff_ind, 218)
 
 problem=5
-for i in np.arange(rep): 
+for i in rep: 
     print(i)
     np.random.seed(i*problem)
     ###### 
