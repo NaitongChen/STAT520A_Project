@@ -3,7 +3,8 @@
 % Background section
 
 \section{Problem Setup}
-
+Below, we start by specifying the piecewise constant model and outlining the procedures of the two MCMC methods before presenting the discussing the experimental results.
+\subsection{Pairwise Constant Model}
 Consider a sequence of random variables $(Y_1,\cdots,Y_n)$, where $\forall i \in \{1,\cdots,n\}, Y_i \in \mathbb{R}$, such that
 \[
 Y_i \sim \begin{cases}
@@ -13,7 +14,7 @@ N(\mu_2,1) & r_1 < i \leq r_2 \\
 N(\mu_{k+1},1) & r_k < i \leq n \\
 \end{cases},
 \]
-where $k$ is known, $\bm{r} = (r_1,\cdots,r_k)$ denotes the set of integer valued change point locations, and $\bm{\mu} = (\mu_1,\cdots,\mu_{k+1})$ denotes the underlying means of each segment. Note that the $j$th segment is defined to be $\bm{Y}_{r_{j-1}+1 : r_j} = (Y_{r_{j-1}+1}, \cdots, Y_{r_j})$, with $r_0 = 0, r_{k+1} = n$ by convention. In addition, we assume that $\bm{r}$ and $\bm{\mu}$ are independent.\\\\
+where $k$ is known, $\bm{r} = (r_1,\cdots,r_k)$ denotes the set of integer valued change point locations, and $\bm{\mu} = (\mu_1,\cdots,\mu_{k+1})$ denotes the underlying means of each segment. Note that the $j$th segment is defined to be $\bm{Y}_{r_{j-1}+1 : r_j} = (Y_{r_{j-1}+1}, \cdots, Y_{r_j})$, with $r_0 = 0, r_{k+1} = n$ by convention. In addition, we assume that $\bm{r}$ and $\bm{\mu}$ are independent and that the random variables are i.i.d. within each segment.\\\\
 Given a sequence of realized observations $\bm{y} = (y_1,\cdots,y_n)$ from the above data generating process, its likelihood is defined by
 \[
 L( \bm{r}, \bm{\mu} \mid \bm{y} ) = \prod_{i=1}^{k+1}\prod_{j=r_{i-1}+1}^{r_i} f(\mu_i; y_j).
@@ -26,10 +27,11 @@ For simplicity, we assume the priors on the segment means to be
 \]
 As a prior on the change point locations, we assume that $\bm{r}$ follows a discrete uniform distribution over all possible configurations of the change point locations. Specifically, for any gien possible configuration $\bm{r}_c$,
 \[
-p(\bm{r}_c) = \frac{1}{\binom{n-1}{k}}.
+p_{\bm{r}}(\bm{r}_c) = \frac{1}{\binom{n-1}{k}}.
 \]
-Note that by our specification, it is not possible for the last observation in the sequence to be a change point.\\\\
-To obtain a set of samples for $\bm{r}$ and $\bm{\mu}$, given $\left(\bm{r}^i, \bm{\mu}^i\right)$, the Gibbs sampler described in \cite{carlin1992hierarchical} generates the next sample $\left(\bm{r}^{i+1}, \bm{\mu}^{i+1}\right)$ through the following steps:
+Note that by our specification, it is not possible for the last observation in the sequence to be a change point.
+\subsection{MCMC Simulation Procedures}
+Under the above specification, to obtain a set of samples for $\bm{r}$ and $\bm{\mu}$, given $\left(\bm{r}^i, \bm{\mu}^i\right)$, the Gibbs sampler described in \cite{carlin1992hierarchical} generates the next sample $\left(\bm{r}^{i+1}, \bm{\mu}^{i+1}\right)$ through the following steps:
 \begin{enumerate}
 \item generate $\bm{r}^{i+1}$ from the probability mass function
 \[
@@ -37,9 +39,31 @@ p\left(\bm{r} \mid \bm{y}, \bm{\mu^i}\right) = \frac{L\left( \bm{r}, \bm{\mu}^i 
 \]
 where $\bm{r}^j$ in the denominator denotes the $j$th configuration from the permutation of all possible configurations;
 \item generate $\bm{\mu}^{i+1}$ by
-\[
+\begin{align} \label{eqn:post_mean}
 \mu_j^{i+1} \sim N\left( \frac{m+\sum_{l=r_{j-1}+1}^{r_j^{i+1}}y_l}{r_j^{i+1} - r_{j-1}^{i+1}}, \left( 1 + r_j - r_{j-1} \right)^{-1} \right), \forall j \in \{ 1,\cdots, k+1 \}.
-\]
+\end{align}
 \end{enumerate}
-
+Similarly, given $\left(\bm{r}^i, \bm{\mu}^i\right)$, the Metropolis-within-Gibbs (MWG) sampler described in \cite{antoch2008application} generates the next sample $\left(\bm{r}^{i+1}, \bm{\mu}^{i+1}\right)$ through the following steps:
+\begin{enumerate}
+\item generate $\bm{r}'$ from the discrete uniform prior $p_{\bm{r}}$;
+\item accept $\bm{r}'$ as $\bm{r}^{i+1}$ with probability $\min\left(1, \beta\left( \bm{\mu}^i, \bm{r}^i, \bm{r}' \right) \right)$, where
+\[
+\beta\left( \bm{\mu}^i, \bm{r}^i, \bm{r}' \right) = \frac{L\left( \bm{r}', \bm{\mu}^i \mid \bm{y} \right)}{L\left( \bm{r}^i, \bm{\mu}^i \mid \bm{y} \right)};
+\]
+\item otherwise set $\bm{r}^{i+1} = \bm{r}^i$;
+\item generate $\mu^{i+1}$ following the last step of the Gibbs sampler.
+\end{enumerate}
+Despite the use of conjugate priors when sampling the means of each segment, the trade-off between evaluating the expensive full conditional distribution of the change point locations and searching over a potentially large space using a cheaper sampler that risks low acceptance rates is still present. Specifically, the cost of computing $p\left(\bm{r} \mid \bm{y}, \bm{\mu}^i\right)$ from the Gibbs sampler grows linearly in the length of the time series and exponentially in the number of change points to be detected. The search space size of all configurations of change point locations from the MWG sampler also grows in the same manner.\\\\
+Before presenting the experiment results, it is worth noting that the posterior distribution 
+\begin{align*}
+p(\bm{r} \mid \bm{y}) &= \int_{\mu_1}\cdots\int_{\mu_{k+1}} p(\bm{y} \mid \bm{\mu}, \bm{r}) p_{\bm{r}}(\bm{r}) p(\mu_1)\cdots p(\mu_{k+1}) d\mu_1\cdots d\mu_{k+1}\\
+&= p_{\bm{r}}(\bm{r})\left(\int_{\mu_1}p(\bm{y}_{1 : r_1} \mid \mu_1) p(\mu_1) d\mu_1\right)\cdots\left(\int_{\mu_{k+1}}p(\bm{y}_{r_k+1 : n} \mid \mu_{k+1}) p(\mu_{k+1}) d\mu_{k+1}\right)\\
+&\coloneqq p_{\bm{r}}(\bm{r})Q(1,r_1,\mu_1)\cdots Q(r_{k}+1,n,\mu_{k+1}).
+\end{align*}
+can be fully evaluated. Note that $p(\mu_i)$ denotes the prior distribution of the $i$th segment mean, and 
+\[
+p(\bm{y}_{r_{i-1}+1:r_i} \mid \mu_i) = \prod_{j=r_{i-1}+1}^{r_i} f(\mu_i ; y_j)
+\]
+denotes the likelihood of $\mu_i$ given all observations from the $i$th segment of the sequence.\\\\
+This posterior distribution can be evaluated using Baye's rule because the $Q(\cdot)$'s are the normalizing constants of the known posterior distributions of the segment means defined in \cref{eqn:post_mean}. This allows us to more directly compare the quality of the samples generated from the two MCMC methods in the next section.
 % ...
