@@ -1,9 +1,7 @@
-\BOOKMARK [1][-]{section.1}{Background}{}% 1
-\BOOKMARK [2][-]{subsection.1.1}{Notations and Assumptions}{section.1}% 2
-\BOOKMARK [1][-]{section.2}{Asymptotic Normality and Efficiency of MLE}{}% 3
-\BOOKMARK [2][-]{subsection.2.1}{Score Function and Fisher Information}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.2}{Asymptotic Normality of MLE}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.3}{Asymptotic Efficiency of MLE}{section.2}% 6
-\BOOKMARK [1][-]{section.3}{Quantifying the Distance between MLE to its Asymptotic Distribution}{}% 7
-\BOOKMARK [1][-]{appendix.A}{Exercises}{}% 8
-\BOOKMARK [1][-]{appendix.B}{Proof of Slutsky's Theorem}{}% 9
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Problem Setup}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Pairwise Constant Model}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{MCMC Simulation Procedures}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Experiment}{}% 5
+\BOOKMARK [1][-]{section.4}{Discussion}{}% 6
+\BOOKMARK [1][-]{appendix.A}{Supplementary Plots}{}% 7

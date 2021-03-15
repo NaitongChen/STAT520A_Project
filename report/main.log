@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2018.9.11)  8 DEC 2020 19:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2018.9.11)  15 MAR 2021 18:32
 entering extended mode
 **./main.tex
 (main.tex
@@ -889,20 +889,20 @@ Package cleveref Info: always capitalise cross-reference names on input line 78
  (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -991,10 +991,10 @@ Package biblatex Warning: File 'main.bbl' is wrong format version - expected 3.
 
 Package biblatex Info: ... file 'main.bbl' found.
 (main.bbl)
-Package biblatex Info: Reference section=0 on input line 23.
-Package biblatex Info: Reference segment=0 on input line 23.
+Package biblatex Info: Reference section=0 on input line 15.
+Package biblatex Info: Reference segment=0 on input line 15.
 \AtBeginShipoutBox=\box45
-Package hyperref Info: Link coloring ON on input line 23.
+Package hyperref Info: Link coloring ON on input line 15.
 
 ("C:\Users\chenn\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.s
 ty"
@@ -1006,251 +1006,1004 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count413
 )
-LaTeX Info: Redefining \ref on input line 23.
-LaTeX Info: Redefining \pageref on input line 23.
-LaTeX Info: Redefining \nameref on input line 23.
+LaTeX Info: Redefining \ref on input line 15.
+LaTeX Info: Redefining \pageref on input line 15.
+LaTeX Info: Redefining \nameref on input line 15.
  (main.out) (main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 26.
+LaTeX Font Info:    Try loading font information for U+msa on input line 18.
 
 ("C:\Users\chenn\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 26.
+LaTeX Font Info:    Try loading font information for U+msb on input line 18.
 ("C:\Users\chenn\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (sections/background.tex
+) (sections/introduction.tex
 
-LaTeX Warning: Citation 'anastasiou2015bounds' on page 1 undefined on input lin
+LaTeX Warning: Citation 'chen1997testing' on page 1 undefined on input line 7.
+
+
+LaTeX Warning: Citation 'elsner2004detecting' on page 1 undefined on input line
+ 7.
+
+
+LaTeX Warning: Citation 'killick2012optimal' on page 1 undefined on input line 
+7.
+
+
+LaTeX Warning: Citation 'carlin1992hierarchical' on page 1 undefined on input l
+ine 7.
+
+
+LaTeX Warning: Citation 'carlin1992hierarchical' on page 1 undefined on input l
+ine 8.
+
+
+LaTeX Warning: Citation 'carlin1992hierarchical' on page 1 undefined on input l
+ine 8.
+
+
+LaTeX Warning: Citation 'stephens1994bayesian' on page 1 undefined on input lin
 e 9.
 
 
-LaTeX Warning: Citation 'anastasiou2015bounds' on page 1 undefined on input lin
-e 10.
+LaTeX Warning: Citation 'lavielle2001application' on page 1 undefined on input 
+line 9.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--11
+LaTeX Warning: Citation 'green1995reversible' on page 1 undefined on input line
+ 9.
+
+
+LaTeX Warning: Citation 'antoch2008application' on page 1 undefined on input li
+ne 9.
+
+
+LaTeX Warning: Citation 'antoch2008application' on page 1 undefined on input li
+ne 9.
+
+
+LaTeX Warning: Citation 'carlin1992hierarchical' on page 1 undefined on input l
+ine 9.
+
+
+LaTeX Warning: Citation 'carlin1992hierarchical' on page 1 undefined on input l
+ine 10.
+
+
+LaTeX Warning: Citation 'antoch2008application' on page 1 undefined on input li
+ne 10.
+
+
+LaTeX Warning: Citation 'carlin1992hierarchical' on page 1 undefined on input l
+ine 10.
+
+
+LaTeX Warning: Citation 'antoch2008application' on page 1 undefined on input li
+ne 10.
+
+
+LaTeX Warning: Citation 'benson2018adaptive' on page 1 undefined on input line 
+10.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--11
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--11
+Overfull \hbox (2.86998pt too wide) in paragraph at lines 7--11
+\OT1/cmr/m/n/10 One of the ear-li-est Bayesian ap-proaches to the change point 
+prob-lem is de-vel-oped in [[]]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--11
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--11
+Overfull \hbox (4.9671pt too wide) in paragraph at lines 7--11
+\OT1/cmr/m/n/10 dis-tri-bu-tions [[]; []]. The ap-proach in [[]]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--11
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--11
-
+Overfull \hbox (9.53667pt too wide) in paragraph at lines 7--11
+\OT1/cmr/m/n/10 In this re-port, we com-pare the Bayesian change point de-tec-t
+ion prob-lems pro-posed in [[]]
  []
 
 [1
 
-{C:/Users/chenn/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 19--23
+{C:/Users/chenn/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}])
+(sections/problem.tex
+Underfull \hbox (badness 10000) in paragraph at lines 16--19
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 23.
-("C:\Users\chenn\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--25
+
+ []
+
+
+LaTeX Warning: Citation 'carlin1992hierarchical' on page 2 undefined on input l
+ine 34.
+
+[2]
+
+LaTeX Warning: Citation 'antoch2008application' on page 3 undefined on input li
+ne 46.
+
+
+Overfull \hbox (6.31673pt too wide) in paragraph at lines 46--48
+\OT1/cmr/m/n/10 Similarly, given $[]$, the Metropolis-within-Gibbs (MWG) sam-pl
+er de-scribed in [[]]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--58
+
+ []
+
+) (sections/experiment.tex
+Underfull \hbox (badness 10000) in paragraph at lines 66--2
+
+ []
+
+<fig/../../plots/sequence_M2_N50_seed1_diffind2.png, id=59, 462.528pt x 346.896
+pt>
+File: fig/../../plots/sequence_M2_N50_seed1_diffind2.png Graphic file (type png
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 23.
+<use fig/../../plots/sequence_M2_N50_seed1_diffind2.png>
+Package pdftex.def Info: fig/../../plots/sequence_M2_N50_seed1_diffind2.png  us
+ed on input line 11.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/sequence_M2_N20000_seed1_diffind2.png, id=61, 462.528pt x 346.
+896pt>
+File: fig/../../plots/sequence_M2_N20000_seed1_diffind2.png Graphic file (type 
+png)
+<use fig/../../plots/sequence_M2_N20000_seed1_diffind2.png>
+Package pdftex.def Info: fig/../../plots/sequence_M2_N20000_seed1_diffind2.png 
+ used on input line 15.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/sequence_M3_N100_seed2_diffind2.png, id=62, 462.528pt x 346.89
+6pt>
+File: fig/../../plots/sequence_M3_N100_seed2_diffind2.png Graphic file (type pn
+g)
+<use fig/../../plots/sequence_M3_N100_seed2_diffind2.png>
+Package pdftex.def Info: fig/../../plots/sequence_M3_N100_seed2_diffind2.png  u
+sed on input line 19.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/sequence_M4_N100_seed3_diffind2.png, id=63, 462.528pt x 346.89
+6pt>
+File: fig/../../plots/sequence_M4_N100_seed3_diffind2.png Graphic file (type pn
+g)
+<use fig/../../plots/sequence_M4_N100_seed3_diffind2.png>
+Package pdftex.def Info: fig/../../plots/sequence_M4_N100_seed3_diffind2.png  u
+sed on input line 23.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/sequence_M4_N60_seed3_diffind2.png, id=64, 462.528pt x 346.896
+pt>
+File: fig/../../plots/sequence_M4_N60_seed3_diffind2.png Graphic file (type png
 )
-(sections/body.tex
-
-LaTeX Warning: Citation 'hogg2005introduction' on page 2 undefined on input lin
-e 5.
-
-
-LaTeX Warning: Citation 'hogg2005introduction' on page 2 undefined on input lin
-e 5.
-
-[2] [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 121--125
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--125
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 129--131
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--137
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--137
-
- []
-
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 143--146
-
- []
-
-[6]
-<fig/../../../misc/N10.jpg, id=133, 301.125pt x 301.125pt>
-File: fig/../../../misc/N10.jpg Graphic file (type jpg)
-<use fig/../../../misc/N10.jpg>
-Package pdftex.def Info: fig/../../../misc/N10.jpg  used on input line 184.
-(pdftex.def)             Requested size: 135.50499pt x 135.50499pt.
-<fig/../../../misc/N40.jpg, id=134, 301.125pt x 301.125pt>
-File: fig/../../../misc/N40.jpg Graphic file (type jpg)
-<use fig/../../../misc/N40.jpg>
-Package pdftex.def Info: fig/../../../misc/N40.jpg  used on input line 188.
-(pdftex.def)             Requested size: 135.50499pt x 135.50499pt.
-<fig/../../../misc/N70.jpg, id=135, 301.125pt x 301.125pt>
-File: fig/../../../misc/N70.jpg Graphic file (type jpg)
-<use fig/../../../misc/N70.jpg>
-Package pdftex.def Info: fig/../../../misc/N70.jpg  used on input line 192.
-(pdftex.def)             Requested size: 135.50499pt x 135.50499pt.
-<fig/../../../misc/N100.jpg, id=136, 301.125pt x 301.125pt>
-File: fig/../../../misc/N100.jpg Graphic file (type jpg)
-<use fig/../../../misc/N100.jpg>
-Package pdftex.def Info: fig/../../../misc/N100.jpg  used on input line 196.
-(pdftex.def)             Requested size: 135.50499pt x 135.50499pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 174--201
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 174--201
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 174--201
-
- []
-
-
-Overfull \hbox (4.91718pt too wide) in paragraph at lines 174--201
-\OT1/cmr/m/n/10 We now ver-ify The-o-rem [][]2.2[][] through some sim-u-la-tion
-s. From The-o-rem [][]2.2[][], we have that $[] [] \OMS/cmsy/m/n/10 N\OT1/cmr/m
-/n/10 (\OML/cmm/m/it/10 []; [][]\OT1/cmr/m/n/10 )$.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 174--201
-
- []
+<use fig/../../plots/sequence_M4_N60_seed3_diffind2.png>
+Package pdftex.def Info: fig/../../plots/sequence_M4_N60_seed3_diffind2.png  us
+ed on input line 27.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+[3]
+<fig/../../plots/SampleTime_M2_N50_NMCMC1_seed0_diffind2.png, id=76, 462.528pt 
+x 346.896pt>
+File: fig/../../plots/SampleTime_M2_N50_NMCMC1_seed0_diffind2.png Graphic file 
+(type png)
+<use fig/../../plots/SampleTime_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/SampleTime_M2_N50_NMCMC1_seed0_diffind
+2.png  used on input line 36.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/SampleTime_M2_N20000_NMCMC3_seed0_diffind2.png, id=77, 462.528
+pt x 346.896pt>
+File: fig/../../plots/SampleTime_M2_N20000_NMCMC3_seed0_diffind2.png Graphic fi
+le (type png)
+<use fig/../../plots/SampleTime_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/SampleTime_M2_N20000_NMCMC3_seed0_diff
+ind2.png  used on input line 40.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/SampleTime_M3_N100_NMCMC3_seed0_diffind2.png, id=78, 462.528pt
+ x 346.896pt>
+File: fig/../../plots/SampleTime_M3_N100_NMCMC3_seed0_diffind2.png Graphic file
+ (type png)
+<use fig/../../plots/SampleTime_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/SampleTime_M3_N100_NMCMC3_seed0_diffin
+d2.png  used on input line 44.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/SampleTime_M4_N100_NMCMC3_seed0_diffind2.png, id=79, 462.528pt
+ x 346.896pt>
+File: fig/../../plots/SampleTime_M4_N100_NMCMC3_seed0_diffind2.png Graphic file
+ (type png)
+<use fig/../../plots/SampleTime_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/SampleTime_M4_N100_NMCMC3_seed0_diffin
+d2.png  used on input line 48.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/SampleTime_M4_N60_NMCMC3_seed0_diffind2.png, id=80, 462.528pt 
+x 346.896pt>
+File: fig/../../plots/SampleTime_M4_N60_NMCMC3_seed0_diffind2.png Graphic file 
+(type png)
+<use fig/../../plots/SampleTime_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/SampleTime_M4_N60_NMCMC3_seed0_diffind
+2.png  used on input line 52.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7]
+<fig/../../plots/Trace_M2_N50_NMCMC1_seed1_diffind2.png, id=81, 462.528pt x 346
+.896pt>
+File: fig/../../plots/Trace_M2_N50_NMCMC1_seed1_diffind2.png Graphic file (type
+ png)
+<use fig/../../plots/Trace_M2_N50_NMCMC1_seed1_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Trace_M2_N50_NMCMC1_seed1_diffind2.png
+  used on input line 61.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/Trace_M2_N20000_NMCMC3_seed1_diffind2.png, id=82, 462.528pt x 
+346.896pt>
+File: fig/../../plots/Trace_M2_N20000_NMCMC3_seed1_diffind2.png Graphic file (t
+ype png)
+<use fig/../../plots/Trace_M2_N20000_NMCMC3_seed1_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Trace_M2_N20000_NMCMC3_seed1_diffind2.
+png  used on input line 65.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/Trace_M3_N100_NMCMC3_seed1_diffind2.png, id=83, 462.528pt x 34
+6.896pt>
+File: fig/../../plots/Trace_M3_N100_NMCMC3_seed1_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/Trace_M3_N100_NMCMC3_seed1_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Trace_M3_N100_NMCMC3_seed1_diffind2.pn
+g  used on input line 69.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/Trace_M4_N100_NMCMC3_seed1_diffind2.png, id=84, 462.528pt x 34
+6.896pt>
+File: fig/../../plots/Trace_M4_N100_NMCMC3_seed1_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/Trace_M4_N100_NMCMC3_seed1_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Trace_M4_N100_NMCMC3_seed1_diffind2.pn
+g  used on input line 73.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/Trace_M4_N60_NMCMC3_seed1_diffind2.png, id=85, 462.528pt x 346
+.896pt>
+File: fig/../../plots/Trace_M4_N60_NMCMC3_seed1_diffind2.png Graphic file (type
+ png)
+<use fig/../../plots/Trace_M4_N60_NMCMC3_seed1_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Trace_M4_N60_NMCMC3_seed1_diffind2.png
+  used on input line 77.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
-LaTeX Warning: Citation 'anastasiou2015bounds' on page 8 undefined on input lin
-e 235.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (sections/open-questions.tex
-Underfull \hbox (badness 10000) in paragraph at lines 233--2
+<fig/../../plots/Trace_post_burnin_M2_N50_NMCMC1_seed3_diffind2.png, id=86, 462
+.528pt x 346.896pt>
+File: fig/../../plots/Trace_post_burnin_M2_N50_NMCMC1_seed3_diffind2.png Graphi
+c file (type png)
+<use fig/../../plots/Trace_post_burnin_M2_N50_NMCMC1_seed3_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Trace_post_burnin_M2_N50_NMCMC1_seed3_
+diffind2.png  used on input line 86.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/Trace_post_burnin_M2_N20000_NMCMC3_seed3_diffind2.png, id=87, 
+462.528pt x 346.896pt>
+File: fig/../../plots/Trace_post_burnin_M2_N20000_NMCMC3_seed3_diffind2.png Gra
+phic file (type png)
+<use fig/../../plots/Trace_post_burnin_M2_N20000_NMCMC3_seed3_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Trace_post_burnin_M2_N20000_NMCMC3_see
+d3_diffind2.png  used on input line 90.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/Trace_post_burnin_M3_N100_NMCMC3_seed3_diffind2.png, id=88, 46
+2.528pt x 346.896pt>
+File: fig/../../plots/Trace_post_burnin_M3_N100_NMCMC3_seed3_diffind2.png Graph
+ic file (type png)
+<use fig/../../plots/Trace_post_burnin_M3_N100_NMCMC3_seed3_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Trace_post_burnin_M3_N100_NMCMC3_seed3
+_diffind2.png  used on input line 94.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/Trace_post_burnin_M4_N100_NMCMC3_seed3_diffind2.png, id=89, 46
+2.528pt x 346.896pt>
+File: fig/../../plots/Trace_post_burnin_M4_N100_NMCMC3_seed3_diffind2.png Graph
+ic file (type png)
+<use fig/../../plots/Trace_post_burnin_M4_N100_NMCMC3_seed3_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Trace_post_burnin_M4_N100_NMCMC3_seed3
+_diffind2.png  used on input line 98.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/Trace_post_burnin_M4_N60_NMCMC3_seed3_diffind2.png, id=90, 462
+.528pt x 346.896pt>
+File: fig/../../plots/Trace_post_burnin_M4_N60_NMCMC3_seed3_diffind2.png Graphi
+c file (type png)
+<use fig/../../plots/Trace_post_burnin_M4_N60_NMCMC3_seed3_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Trace_post_burnin_M4_N60_NMCMC3_seed3_
+diffind2.png  used on input line 102.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[8 <./fig/../../../misc/N10.jpg> <./fig/../../../misc/N40.jpg> <./fig/../../../
-misc/N70.jpg> <./fig/../../../misc/N100.jpg>]
+<fig/../../plots/KL_M2_N50_NMCMC1_seed0_diffind2.png, id=91, 462.528pt x 346.89
+6pt>
+File: fig/../../plots/KL_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (type pn
+g)
+<use fig/../../plots/KL_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/KL_M2_N50_NMCMC1_seed0_diffind2.png  u
+sed on input line 111.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/KL_M2_N20000_NMCMC3_seed0_diffind2.png, id=92, 462.528pt x 346
+.896pt>
+File: fig/../../plots/KL_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (type
+ png)
+<use fig/../../plots/KL_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/KL_M2_N20000_NMCMC3_seed0_diffind2.png
+  used on input line 115.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/KL_M3_N100_NMCMC3_seed0_diffind2.png, id=93, 462.528pt x 346.8
+96pt>
+File: fig/../../plots/KL_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (type p
+ng)
+<use fig/../../plots/KL_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/KL_M3_N100_NMCMC3_seed0_diffind2.png  
+used on input line 119.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/KL_M4_N100_NMCMC3_seed0_diffind2.png, id=94, 462.528pt x 346.8
+96pt>
+File: fig/../../plots/KL_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (type p
+ng)
+<use fig/../../plots/KL_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/KL_M4_N100_NMCMC3_seed0_diffind2.png  
+used on input line 123.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/KL_M4_N60_NMCMC3_seed0_diffind2.png, id=95, 462.528pt x 346.89
+6pt>
+File: fig/../../plots/KL_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (type pn
+g)
+<use fig/../../plots/KL_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/KL_M4_N60_NMCMC3_seed0_diffind2.png  u
+sed on input line 127.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
-LaTeX Warning: Citation 'zolotarev1976metric' on page 9 undefined on input line
- 6.
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<fig/../../plots/Posterior_post_burnin_M2_N50_NMCMC1_seed3_diffind2.png, id=96,
+ 462.528pt x 346.896pt>
+File: fig/../../plots/Posterior_post_burnin_M2_N50_NMCMC1_seed3_diffind2.png Gr
+aphic file (type png)
+<use fig/../../plots/Posterior_post_burnin_M2_N50_NMCMC1_seed3_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Posterior_post_burnin_M2_N50_NMCMC1_se
+ed3_diffind2.png  used on input line 136.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/Posterior_post_burnin_M2_N20000_NMCMC3_seed3_diffind2.png, id=
+97, 462.528pt x 346.896pt>
+File: fig/../../plots/Posterior_post_burnin_M2_N20000_NMCMC3_seed3_diffind2.png
+ Graphic file (type png)
+<use fig/../../plots/Posterior_post_burnin_M2_N20000_NMCMC3_seed3_diffind2.png>
+
+Package pdftex.def Info: fig/../../plots/Posterior_post_burnin_M2_N20000_NMCMC3
+_seed3_diffind2.png  used on input line 140.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/Posterior_post_burnin_M3_N100_NMCMC3_seed3_diffind2.png, id=98
+, 462.528pt x 346.896pt>
+File: fig/../../plots/Posterior_post_burnin_M3_N100_NMCMC3_seed3_diffind2.png G
+raphic file (type png)
+<use fig/../../plots/Posterior_post_burnin_M3_N100_NMCMC3_seed3_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Posterior_post_burnin_M3_N100_NMCMC3_s
+eed3_diffind2.png  used on input line 144.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/Posterior_post_burnin_M4_N100_NMCMC3_seed3_diffind2.png, id=99
+, 462.528pt x 346.896pt>
+File: fig/../../plots/Posterior_post_burnin_M4_N100_NMCMC3_seed3_diffind2.png G
+raphic file (type png)
+<use fig/../../plots/Posterior_post_burnin_M4_N100_NMCMC3_seed3_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Posterior_post_burnin_M4_N100_NMCMC3_s
+eed3_diffind2.png  used on input line 148.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/Posterior_post_burnin_M4_N60_NMCMC3_seed3_diffind2.png, id=100
+, 462.528pt x 346.896pt>
+File: fig/../../plots/Posterior_post_burnin_M4_N60_NMCMC3_seed3_diffind2.png Gr
+aphic file (type png)
+<use fig/../../plots/Posterior_post_burnin_M4_N60_NMCMC3_seed3_diffind2.png>
+Package pdftex.def Info: fig/../../plots/Posterior_post_burnin_M4_N60_NMCMC3_se
+ed3_diffind2.png  used on input line 152.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (sections/discussion.tex) [4 <./fig/../../plots/sequence_M2_N50_seed1_diffind
+2.png> <./fig/../../plots/sequence_M2_N20000_seed1_diffind2.png> <./fig/../../p
+lots/sequence_M3_N100_seed2_diffind2.png> <./fig/../../plots/sequence_M4_N100_s
+eed3_diffind2.png> <./fig/../../plots/sequence_M4_N60_seed3_diffind2.png>]
+[5 <./fig/../../plots/SampleTime_M2_N50_NMCMC1_seed0_diffind2.png> <./fig/../..
+/plots/SampleTime_M2_N20000_NMCMC3_seed0_diffind2.png> <./fig/../../plots/Sampl
+eTime_M3_N100_NMCMC3_seed0_diffind2.png> <./fig/../../plots/SampleTime_M4_N100_
+NMCMC3_seed0_diffind2.png> <./fig/../../plots/SampleTime_M4_N60_NMCMC3_seed0_di
+ffind2.png> <./fig/../../plots/Trace_M2_N50_NMCMC1_seed1_diffind2.png> <./fig/.
+./../plots/Trace_M2_N20000_NMCMC3_seed1_diffind2.png> <./fig/../../plots/Trace_
+M3_N100_NMCMC3_seed1_diffind2.png> <./fig/../../plots/Trace_M4_N100_NMCMC3_seed
+1_diffind2.png> <./fig/../../plots/Trace_M4_N60_NMCMC3_seed1_diffind2.png>]
+[6 <./fig/../../plots/Trace_post_burnin_M2_N50_NMCMC1_seed3_diffind2.png> <./fi
+g/../../plots/Trace_post_burnin_M2_N20000_NMCMC3_seed3_diffind2.png> <./fig/../
+../plots/Trace_post_burnin_M3_N100_NMCMC3_seed3_diffind2.png> <./fig/../../plot
+s/Trace_post_burnin_M4_N100_NMCMC3_seed3_diffind2.png> <./fig/../../plots/Trace
+_post_burnin_M4_N60_NMCMC3_seed3_diffind2.png> <./fig/../../plots/KL_M2_N50_NMC
+MC1_seed0_diffind2.png> <./fig/../../plots/KL_M2_N20000_NMCMC3_seed0_diffind2.p
+ng> <./fig/../../plots/KL_M3_N100_NMCMC3_seed0_diffind2.png> <./fig/../../plots
+/KL_M4_N100_NMCMC3_seed0_diffind2.png> <./fig/../../plots/KL_M4_N60_NMCMC3_seed
+0_diffind2.png>] [7 <./fig/../../plots/Posterior_post_burnin_M2_N50_NMCMC1_seed
+3_diffind2.png> <./fig/../../plots/Posterior_post_burnin_M2_N20000_NMCMC3_seed3
+_diffind2.png> <./fig/../../plots/Posterior_post_burnin_M3_N100_NMCMC3_seed3_di
+ffind2.png> <./fig/../../plots/Posterior_post_burnin_M4_N100_NMCMC3_seed3_diffi
+nd2.png> <./fig/../../plots/Posterior_post_burnin_M4_N60_NMCMC3_seed3_diffind2.
+png>] (sections/supplementary.tex
+<fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png, id=184, 462.528pt x 3
+46.896pt>
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 11.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png, id=185, 462.528pt 
+x 346.896pt>
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 15.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png, id=186, 462.528pt x 
+346.896pt>
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 19.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png, id=187, 462.528pt x 
+346.896pt>
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 23.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png, id=188, 462.528pt x 3
+46.896pt>
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 27.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 36.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 40.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 44.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 48.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 52.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
 
-LaTeX Warning: Citation 'anastasiou2015bounds' on page 9 undefined on input lin
-e 16.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 61.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 65.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 69.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 73.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 77.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
-LaTeX Warning: Citation 'anastasiou2015bounds' on page 9 undefined on input lin
-e 26.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-<fig/../../../misc/rplot.jpg, id=167, 501.875pt x 501.875pt>
-File: fig/../../../misc/rplot.jpg Graphic file (type jpg)
-<use fig/../../../misc/rplot.jpg>
-Package pdftex.def Info: fig/../../../misc/rplot.jpg  used on input line 29.
-(pdftex.def)             Requested size: 200.74643pt x 200.74643pt.
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 86.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 90.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 94.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 98.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 102.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
-LaTeX Warning: Citation 'anastasiou2015bounds' on page 9 undefined on input lin
-e 34.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 111.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 115.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 119.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 123.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 127.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
-LaTeX Warning: Citation 'anastasiou2015bounds' on page 9 undefined on input lin
-e 35.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 136.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 140.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 144.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 148.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 152.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
-LaTeX Warning: Citation 'anastasiou2015bounds' on page 9 undefined on input lin
-e 35.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 161.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 165.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 169.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 173.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 177.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
-LaTeX Warning: Citation 'anastasiou2017bounds' on page 9 undefined on input lin
-e 35.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-)
-Underfull \hbox (badness 10000) in paragraph at lines 24--33
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 186.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 190.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 194.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 198.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 202.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 211.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 215.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 219.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 223.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 227.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 24--33
+LaTeX Warning: `h' float specifier changed to `ht'.
 
- []
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 236.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 240.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 244.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 248.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 252.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-Underfull \hbox (badness 10000) in paragraph at lines 24--33
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 261.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 265.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 269.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 273.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 277.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 286.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 290.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 294.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 298.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 302.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
-Overfull \hbox (30.35104pt too wide) in paragraph at lines 24--33
-\OT1/cmr/m/n/10 op-ing mul-ti-vari-ate ver-sions of two of the lem-mas used in 
-the proof. Namely, Lemma 2.1 in [[]]
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9] [10 <./fig/../../../misc/rplot.jpg>] (sections/appx-exercises.tex)
-(sections/appx-slutsky.tex
-Overfull \hbox (14.67088pt too wide) detected at line 20
-[]
- []
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 311.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 315.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 319.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 323.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 327.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
-[11
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 64--66
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 336.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 340.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 344.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 348.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 352.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12])
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 361.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 365.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 369.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 373.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 377.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
 
-LaTeX Warning: Empty bibliography on input line 48.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 50.
-[13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 50.
+File: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.pn
+g  used on input line 386.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png Graphic file (
+type png)
+<use fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2
+.png  used on input line 390.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 394.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png Graphic file (ty
+pe png)
+<use fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.p
+ng  used on input line 398.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+File: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png Graphic file (typ
+e png)
+<use fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>
+Package pdftex.def Info: fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.pn
+g  used on input line 402.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [8
+
+ <./fig/../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png> <./fig/../../plots
+/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png> <./fig/../../plots/ess_se_M3_N100_
+NMCMC3_seed0_diffind2.png> <./fig/../../plots/ess_se_M4_N100_NMCMC3_seed0_diffi
+nd2.png> <./fig/../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png>]
+
+LaTeX Warning: Empty bibliography on input line 31.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 33.
+[9] [10] [11] [12] [13] [14] [15] [16]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 33.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 50.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 50.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 33.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 33.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A7A073F76A98AD98261EC33E06FF6129;653.
+(rerunfilecheck)             Checksum: B546237F10584342125FEDF2366A9510;394.
 
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
@@ -1262,13 +2015,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26082 strings out of 492973
- 473554 string characters out of 3126692
- 746261 words of memory out of 3000000
- 29647 multiletter control sequences out of 15000+200000
- 546677 words of font info for 76 fonts, out of 3000000 for 9000
+ 26281 strings out of 492973
+ 483813 string characters out of 3126692
+ 746978 words of memory out of 3000000
+ 29710 multiletter control sequences out of 15000+200000
+ 545465 words of font info for 72 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,12n,63p,1835b,1128s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 43i,12n,63p,1835b,1127s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/chenn/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb><C:/Users/chenn/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmbx12.pfb><C:/Users/chenn/AppData/Local/Programs/MiKTeX 2.9/f
@@ -1284,21 +2037,15 @@ ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/chenn/AppData/
 Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/ch
 enn/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><
 C:/Users/chenn/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmr6.pfb><C:/Users/chenn/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmr7.pfb><C:/Users/chenn/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr8.pfb><C:/Users/chenn/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Users/chenn/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/chenn/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users
-/chenn/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.p
-fb><C:/Users/chenn/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmti10.pfb><C:/Users/chenn/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmtt10.pfb><C:/Users/chenn/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/chenn/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (13 pages, 349702 bytes).
+/cmr7.pfb><C:/Users/chenn/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmsl10.pfb><C:/Users/chenn/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/chenn/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/chenn/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/chenn/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (16 pages, 1270361 bytes).
 PDF statistics:
- 285 PDF objects out of 1000 (max. 8388607)
- 51 named destinations out of 1000 (max. 500000)
- 98 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 419 PDF objects out of 1000 (max. 8388607)
+ 163 named destinations out of 1000 (max. 500000)
+ 232 words of extra memory for PDF output out of 10000 (max. 10000000)
 
