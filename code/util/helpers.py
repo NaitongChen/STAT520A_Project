@@ -217,6 +217,24 @@ def get_MWG(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
     times_mwg = np.cumsum(times_mwg)
     return locs_mwg, times_mwg
 
+def get_MWG_post_burnin(M=None, n=None, n_MCMC=None, diff_ind=None, i=None, b=None):
+    file_name = "MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffind" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
+    MWG = pk.load(open(path, 'rb'))
+
+    if b != np.inf:
+        b = int(b)
+        locs_mwg = np.array(MWG[0])[b:,:]
+        times_mwg = np.array(MWG[3])
+        times_mwg = np.cumsum(times_mwg)
+        times_mwg = times_mwg[b:]
+        return locs_mwg, times_mwg
+    else:
+        locs_mwg = np.array(MWG[0])[:0,:]
+        times_mwg = np.array(MWG[3])[:0]
+        times_mwg = np.cumsum(times_mwg)
+        return locs_mwg, times_mwg
+
 def get_Gibbs(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
     file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
@@ -225,6 +243,18 @@ def get_Gibbs(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
     locs_gibbs = np.array(Gibbs[0])
     times_gibbs = np.array(Gibbs[2])
     times_gibbs = np.cumsum(times_gibbs)
+    return locs_gibbs, times_gibbs
+
+def get_Gibbs_post_burnin(M=None, n=None, n_MCMC=None, diff_ind=None, i=None, b=None):
+    file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffind" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
+    Gibbs = pk.load(open(path, 'rb'))
+
+    b = int(b)
+    locs_gibbs = np.array(Gibbs[0])[b:,:]
+    times_gibbs = np.array(Gibbs[2])
+    times_gibbs = np.cumsum(times_gibbs)
+    times_gibbs = times_gibbs[b:]
     return locs_gibbs, times_gibbs
 
 def process_data(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
@@ -287,6 +317,39 @@ def plot_trace(M=None, n=None, n_MCMC=None, diff_ind=None, i=None):
     ax2.plot(np.arange(locs_gibbs.shape[0]), locs_gibbs)
 
     file_name = "Trace" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffind" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'plots', file_name))
+    plt.savefig(path)
+    plt.clf()
+
+def plot_trace_after_burn_in(M=None, n=None, n_MCMC=None, diff_ind=None, i=None, bm=None, bg=None):
+    # MWG
+    file_name = "MWG" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffind" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
+    MWG = pk.load(open(path, 'rb'))
+
+    if bm == np.inf:
+        locs_mwg = np.array(0)
+    else:
+        bm = int(bm)
+        locs_mwg = np.array(MWG[0])[bm:,:]
+
+    # Gibbs
+    file_name = "Gibbs" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffind" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
+    Gibbs = pk.load(open(path, 'rb'))
+
+    bg = int(bg)
+    locs_gibbs = np.array(Gibbs[0])[bg:,:]
+
+    plt.clf()
+    fig, (ax1, ax2) = plt.subplots(1, 2, sharey=True)
+    ax1.title.set_text('MWG')
+    if bm != np.inf:
+        ax1.plot(np.arange(locs_mwg.shape[0]), locs_mwg)
+    ax2.title.set_text('Gibbs')
+    ax2.plot(np.arange(locs_gibbs.shape[0]), locs_gibbs)
+
+    file_name = "Trace_post_burnin" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(i) + "_diffind" + str(diff_ind)
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'plots', file_name))
     plt.savefig(path)
     plt.clf()
@@ -447,6 +510,72 @@ def compare_posteriors_marginal(M=None, n=None, n_MCMC=None, diff_ind=None, seed
     plt.legend()
     plt.savefig(path)
 
+def compare_posteriors_marginal_post_burnin(M=None, n=None, n_MCMC=None, diff_ind=None, seed=None, bm=None, bg=None):
+    seq,_,_ = get_sequence(M, n, n_MCMC, diff_ind, 218)
+    combs = combinations(np.arange(seq.shape[0]-1), M-1)
+    combs = np.array(list(combs))
+    post = brute_force_est(seq, M, combs)
+    post_marginal = brute_force_marginal(seq, M, combs, post)
+
+    locs_MWG,_ = get_MWG(M, n, n_MCMC, diff_ind, seed)
+    locs_Gibbs,_ = get_Gibbs(M, n, n_MCMC, diff_ind, seed)
+
+    if bm == np.inf:
+        locs_MWG = np.array(0)
+    else:
+        bm = int(bm)
+        locs_MWG = locs_MWG[bm:,:]
+    bg = int(bg)
+    locs_Gibbs = locs_Gibbs[bg:,:]
+
+    if bm != np.inf:
+        post_MWG = np.zeros((M-1, seq.shape[0]))
+        for j in np.arange(M-1):
+            for i in np.arange(seq.shape[0]):
+                combs_sub = locs_MWG[:,j]
+                args = np.argwhere(combs_sub == i)
+                post_MWG[j, i] = args.shape[0]
+            post_MWG[j,:] = post_MWG[j,:] / np.sum(post_MWG[j,:])
+
+    post_Gibbs = np.zeros((M-1, seq.shape[0]))
+    for j in np.arange(M-1):
+        for i in np.arange(seq.shape[0]):
+            combs_sub = locs_Gibbs[:,j]
+            args = np.argwhere(combs_sub == i)
+            post_Gibbs[j, i] = args.shape[0]
+        post_Gibbs[j,:] = post_Gibbs[j,:] / np.sum(post_Gibbs[j,:])
+
+    plt.clf()
+    fig, axs = plt.subplots(M-1, sharex=True)
+    for j in np.arange(M-1):
+        if M-1 > 1:
+            if n != 20000:
+                axs[j].plot(np.arange(seq.shape[0]), post_marginal[j,:], 'o-', alpha=0.5, label="BF", color='#2ca02c')
+                axs[j].plot(np.arange(seq.shape[0]), post_Gibbs[j,:], 'o-', alpha=0.5, label="Gibbs", color='#1f77b4')
+                if bm != np.inf:
+                    axs[j].plot(np.arange(seq.shape[0]), post_MWG[j,:], 'o-', alpha=0.5, label="MWG", color='#ff7f0e')
+            else:
+                axs[j].plot(np.arange(9975,10025), post_marginal[j,9975:10025], 'o-', alpha=0.5, label="BF", color='#2ca02c')
+                axs[j].plot(np.arange(9975,10025), post_Gibbs[j,9975:10025], 'o-', alpha=0.5, label="Gibbs", color='#1f77b4')
+                if bm != np.inf:
+                    axs[j].plot(np.arange(9975,10025), post_MWG[j,9975:10025], 'o-', alpha=0.5, label="MWG", color='#ff7f0e')
+        else:
+            if n != 20000:
+                axs.plot(np.arange(seq.shape[0]), post_marginal[j,:], 'o-', alpha=0.5, label="BF", color='#2ca02c')
+                axs.plot(np.arange(seq.shape[0]), post_Gibbs[j,:], 'o-', alpha=0.5, label="Gibbs", color='#1f77b4')
+                if bm != np.inf:
+                    axs.plot(np.arange(seq.shape[0]), post_MWG[j,:], 'o-', alpha=0.5, label="MWG", color='#ff7f0e')
+            else:
+                axs.plot(np.arange(9975,10025), post_marginal[j,9975:10025], 'o-', alpha=0.5, label="BF", color='#2ca02c')
+                axs.plot(np.arange(9975,10025), post_Gibbs[j,9975:10025], 'o-', alpha=0.5, label="Gibbs", color='#1f77b4')
+                if bm != np.inf:
+                    axs.plot(np.arange(9975,10025), post_MWG[j,9975:10025], 'o-', alpha=0.5, label="MWG", color='#ff7f0e')
+
+    file_name = "Posterior_post_burnin" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(seed) + "_diffind" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'plots', file_name))
+    plt.legend()
+    plt.savefig(path)
+
 def plottime(M, n, n_MCMC, diff_ind, inds):
     min_len_MWG = np.inf
     min_len_Gibbs = np.inf
@@ -515,7 +644,8 @@ def approx_post(locs_MWG, combs):
 
 def compute_kl(post, locs, combs):
     post_approx = approx_post(locs, combs)
-    return jensenshannon(post, post_approx)
+    # return jensenshannon(post, post_approx)
+    return stat.wasserstein_distance(post, post_approx)
 
 def plot_kl(M, n, n_MCMC, diff_ind, inds):
     seq,_,_ = get_sequence(M, n, n_MCMC, diff_ind, inds)
@@ -585,6 +715,74 @@ def plot_kl(M, n, n_MCMC, diff_ind, inds):
     path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'plots', file_name))
     plt.savefig(path)
 
+def plot_kl_post_burnin(M, n, n_MCMC, diff_ind, inds, bms, bgs):
+    seq,_,_ = get_sequence(M, n, n_MCMC, diff_ind, inds)
+    combs = combinations(np.arange(seq.shape[0]-1), M-1)
+    combs = np.array(list(combs))
+    post = brute_force_est(seq, M, combs)
+
+    max_len_MWG = 0
+    max_len_Gibbs = 0
+    for i in inds:
+        _, times_MWG = get_MWG_post_burnin(M, n, n_MCMC, diff_ind, i, bms[i])
+        _, times_Gibbs = get_Gibbs_post_burnin(M, n, n_MCMC, diff_ind, i, bgs[i])
+        if times_MWG.shape[0] > max_len_MWG:
+            max_len_MWG = times_MWG.shape[0]
+        if times_Gibbs.shape[0] > max_len_Gibbs:
+            max_len_Gibbs = times_Gibbs.shape[0]
+
+    skip_mwg = int(np.ceil(max_len_MWG / 200))
+    skip_gibbs = int(np.ceil(max_len_Gibbs / 200))
+
+    times_MWGs_array = []
+    times_Gibbss_array = []
+    kls_MWGs_array = []
+    kls_Gibbss_array = []
+    locs_MWGs_array = []
+    locs_Gibbss_array = []
+
+    for i in inds:
+        locs_MWG, times_MWG = get_MWG_post_burnin(M, n, n_MCMC, diff_ind, i, bms[i])
+        locs_Gibbs, times_Gibbs = get_Gibbs_post_burnin(M, n, n_MCMC, diff_ind, i, bgs[i])
+        locs_MWGs_array.append(locs_MWG)
+        locs_Gibbss_array.append(locs_Gibbs)
+        times_MWGs_array.append(times_MWG[::skip_mwg])
+        times_Gibbss_array.append(times_Gibbs[::skip_gibbs])
+
+    for j in inds:
+        locs_mwg = locs_MWGs_array[j]
+        locs_gibbs = locs_Gibbss_array[j]
+        kls_MWG = np.zeros(0)
+        kls_Gibbs = np.zeros(0)
+        for i in np.arange(times_MWGs_array[j].shape[0]):
+            print(str(i) + "/" + str(times_MWGs_array[j].shape[0]))
+            kls_MWG = np.hstack([kls_MWG, compute_kl(post, locs_mwg[:(i+1)*skip_mwg,:], combs)])
+        for i in np.arange(times_Gibbss_array[j].shape[0]):
+            print(str(i) + "/" + str(times_Gibbss_array[j].shape[0]))
+            kls_Gibbs = np.hstack([kls_Gibbs, compute_kl(post, locs_gibbs[:(i+1)*skip_gibbs,:], combs)])
+
+        kls_MWGs_array.append(kls_MWG)
+        kls_Gibbss_array.append(kls_Gibbs)
+
+    plt.clf()
+
+    for i in inds:
+        if i == 0:
+            plt.plot(times_Gibbss_array[i], kls_Gibbss_array[i], label="Gibbs", color='#1f77b4', alpha=0.5)
+            plt.plot(times_MWGs_array[i], kls_MWGs_array[i], label="MWG", color='#ff7f0e', alpha=0.5)
+        else:
+            plt.plot(times_Gibbss_array[i], kls_Gibbss_array[i], color='#1f77b4', alpha=0.5)
+            plt.plot(times_MWGs_array[i], kls_MWGs_array[i], color='#ff7f0e', alpha=0.5)
+
+    plt.yscale("log")
+    plt.legend(loc='lower right')
+    plt.ylabel("Wasserstein distance")
+    plt.xlabel("time(s)")
+
+    file_name = "KL" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(0) + "_diffind" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'plots', file_name))
+    plt.savefig(path)
+
 def plot_ess_se(M, n, n_MCMC, diff_ind, inds):
     ess_mwg = np.zeros((inds.shape[0], M-1))
     mcse_mwg = np.zeros((inds.shape[0], M-1))
@@ -642,6 +840,130 @@ def plot_ess_se(M, n, n_MCMC, diff_ind, inds):
 
             ess_mwg[i,2] = dat["ess third cp"][9]
             ess_gibbs[i,2] = dat["ess third cp"][8]
+            mcse_mwg[i,2] = dat["mcse third cp"][9]
+            mcse_gibbs[i,2] = dat["mcse third cp"][8]
+    plt.clf()
+    fig, axs = plt.subplots(2, M-1, sharex=True)
+    for i in np.arange(2):
+        for j in np.arange(M-1):
+            if i == 0: # ess
+                if M-1 > 1:
+                    axs[i, j].scatter(np.zeros(inds.shape[0]), ess_mwg[:,j], label="MWG", color='#ff7f0e')
+                    axs[i, j].scatter(np.ones(inds.shape[0]), ess_gibbs[:,j], label="Gibbs", color='#1f77b4')
+                    axs[i, j].title.set_text("ESS of changepoint" + str(j+1))
+                else:
+                    axs[i].scatter(np.zeros(inds.shape[0]), ess_mwg[:,j], label="MWG", color='#ff7f0e')
+                    axs[i].scatter(np.ones(inds.shape[0]), ess_gibbs[:,j], label="Gibbs", color='#1f77b4')
+                    axs[i].title.set_text("ESS of changepoint" + str(j+1))
+            else: # mcse
+                if M-1 > 1:
+                    axs[i, j].scatter(np.zeros(inds.shape[0]), mcse_mwg[:,j], label="MWG", color='#ff7f0e')
+                    axs[i, j].scatter(np.ones(inds.shape[0]), mcse_gibbs[:,j], label="Gibbs", color='#1f77b4')
+                    axs[i, j].title.set_text("MCSE of changepoint" + str(j+1))
+                else:
+                    axs[i].scatter(np.zeros(inds.shape[0]), mcse_mwg[:,j], label="MWG", color='#ff7f0e')
+                    axs[i].scatter(np.ones(inds.shape[0]), mcse_gibbs[:,j], label="Gibbs", color='#1f77b4')
+                    axs[i].title.set_text("MCSE of changepoint" + str(j+1))
+    file_name = "ess_se" + "_M" + str(M) + "_N" + str(n) + "_NMCMC" + str(n_MCMC) + "_seed" + str(0) + "_diffind" + str(diff_ind)
+    path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'plots', file_name))
+    plt.legend()
+    plt.savefig(path)
+
+def plot_ess_se_post_burnin(M, n, n_MCMC, diff_ind, inds, bms, bgs):
+    ess_mwg = np.zeros((inds.shape[0], M-1))
+    mcse_mwg = np.zeros((inds.shape[0], M-1))
+    ess_gibbs = np.zeros((inds.shape[0], M-1))
+    mcse_gibbs = np.zeros((inds.shape[0], M-1))
+    for i in inds:
+        _, times_MWG = get_MWG_post_burnin(M, n, n_MCMC, diff_ind, i, bms[i])
+        _, times_Gibbs = get_Gibbs_post_burnin(M, n, n_MCMC, diff_ind, i, bgs[i])
+        if times_MWG.shape[0] > 0:
+            diff_m = times_MWG[times_MWG.shape[0]-1] - times_MWG[0]
+            diff_m = 60 / diff_m
+        diff_g = times_Gibbs[times_Gibbs.shape[0]-1] - times_Gibbs[0]
+        diff_g = 60 / diff_g
+
+        file_name = str(i) + "_ess_se.csv"
+        path = os.path.normpath(os.path.join(os.path.dirname( __file__ ), '..', '..', 'data', 'posterior_samples', file_name))
+        dat = pd.read_csv(path)
+        if M == 2 and n == 50:
+            if times_MWG.shape[0] > 0:
+                ess_mwg[i,0] = dat["ess first cp"][3] / diff_m
+            else:
+                ess_mwg[i,0] = np.nan
+            ess_gibbs[i,0] = dat["ess first cp"][2] / diff_g
+            mcse_mwg[i,0] = dat["mcse first cp"][3]
+            mcse_gibbs[i,0] = dat["mcse first cp"][2]
+        elif M == 2 and n == 20000:
+            if times_MWG.shape[0] > 0:
+                ess_mwg[i,0] = dat["ess first cp"][1] / diff_m
+            else:
+                ess_mwg[i,0] = np.nan
+            ess_gibbs[i,0] = dat["ess first cp"][0] / diff_g
+            mcse_mwg[i,0] = dat["mcse first cp"][1]
+            mcse_gibbs[i,0] = dat["mcse first cp"][0]
+        elif M == 3 and n == 100:
+            if times_MWG.shape[0] > 0:
+                ess_mwg[i,0] = dat["ess first cp"][5] / diff_m
+            else:
+                ess_mwg[i,0] = np.nan
+            ess_gibbs[i,0] = dat["ess first cp"][4] / diff_g
+            mcse_mwg[i,0] = dat["mcse first cp"][5]
+            mcse_gibbs[i,0] = dat["mcse first cp"][4]
+
+            if times_MWG.shape[0] > 0:
+                ess_mwg[i,1] = dat["ess second cp"][5] / diff_m
+            else:
+                ess_mwg[i,0] = np.nan
+            ess_gibbs[i,1] = dat["ess second cp"][4] / diff_g
+            mcse_mwg[i,1] = dat["mcse second cp"][5]
+            mcse_gibbs[i,1] = dat["mcse second cp"][4]
+        elif M == 4 and n == 100:
+            if times_MWG.shape[0] > 0:
+                ess_mwg[i,0] = dat["ess first cp"][7] / diff_m
+            else:
+                ess_mwg[i,0] = np.nan
+            ess_gibbs[i,0] = dat["ess first cp"][6] / diff_g
+            mcse_mwg[i,0] = dat["mcse first cp"][7]
+            mcse_gibbs[i,0] = dat["mcse first cp"][6]
+
+            if times_MWG.shape[0] > 0:
+                ess_mwg[i,1] = dat["ess second cp"][7] / diff_m
+            else:
+                ess_mwg[i,0] = np.nan
+            ess_gibbs[i,1] = dat["ess second cp"][6] / diff_g
+            mcse_mwg[i,1] = dat["mcse second cp"][7]
+            mcse_gibbs[i,1] = dat["mcse second cp"][6]
+
+            if times_MWG.shape[0] > 0:
+                ess_mwg[i,2] = dat["ess third cp"][7] / diff_m
+            else:
+                ess_mwg[i,0] = np.nan
+            ess_gibbs[i,2] = dat["ess third cp"][6] / diff_g
+            mcse_mwg[i,2] = dat["mcse third cp"][7]
+            mcse_gibbs[i,2] = dat["mcse third cp"][6]
+        else:
+            if times_MWG.shape[0] > 0:
+                ess_mwg[i,0] = dat["ess first cp"][9] / diff_m
+            else:
+                ess_mwg[i,0] = np.nan
+            ess_gibbs[i,0] = dat["ess first cp"][8] / diff_g
+            mcse_mwg[i,0] = dat["mcse first cp"][9]
+            mcse_gibbs[i,0] = dat["mcse first cp"][8]
+
+            if times_MWG.shape[0] > 0:
+                ess_mwg[i,1] = dat["ess second cp"][9] / diff_m
+            else:
+                ess_mwg[i,0] = np.nan
+            ess_gibbs[i,1] = dat["ess second cp"][8] / diff_g
+            mcse_mwg[i,1] = dat["mcse second cp"][9]
+            mcse_gibbs[i,1] = dat["mcse second cp"][8]
+
+            if times_MWG.shape[0] > 0:
+                ess_mwg[i,2] = dat["ess third cp"][9] / diff_m
+            else:
+                ess_mwg[i,0] = np.nan
+            ess_gibbs[i,2] = dat["ess third cp"][8] / diff_g
             mcse_mwg[i,2] = dat["mcse third cp"][9]
             mcse_gibbs[i,2] = dat["mcse third cp"][8]
     plt.clf()

@@ -26,7 +26,28 @@ n = np.array([50, 20000, 60, 100, 100])
 n_MCMC = np.array([1, 3, 3, 3, 3])
 diff_ind = np.array([2, 5])
 
+# for m in np.arange(M.shape[0]):
+#     for inds in i:
+#         print(m)
+#         helpers.plot_trace(M[m], n[m], n_MCMC[m], diff_ind[0], inds)
+
+burnin_gibbs = np.array([
+    [0,0,0,0,0],
+    [0,0,0,0,0],
+    [4000,1000,2000,500,500],
+    [20,20,20,20,20],
+    [0,5000,100,100,100]
+])
+
+burnin_mwg = np.array([
+    [0,0,0,0,0],
+    [1000,1000,1000,1000,1000],
+    [250000,np.inf,np.inf,400000,300000],
+    [1000,1000,np.inf,1000,1000],
+    [200000,100000,1000,1000,1000]
+])
+
 for m in np.arange(M.shape[0]):
     for inds in i:
         print(m)
-        helpers.plot_trace(M[m], n[m], n_MCMC[m], diff_ind[0], inds)
+        helpers.plot_trace_after_burn_in(M[m], n[m], n_MCMC[m], diff_ind[0], inds, burnin_mwg[m,inds], burnin_gibbs[m,inds])

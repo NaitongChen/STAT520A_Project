@@ -1,0 +1,45 @@
+% !TEX root = ../main.tex
+
+% Background section
+
+\section{Problem Setup}
+
+Consider a sequence of random variables $(Y_1,\cdots,Y_n)$, where $\forall i \in \{1,\cdots,n\}, Y_i \in \mathbb{R}$, such that
+\[
+Y_i \sim \begin{cases}
+N(\mu_1,1) & 1 \leq i \leq r_1 \\
+N(\mu_2,1) & r_1 < i \leq r_2 \\
+\quad \quad \vdots \\
+N(\mu_{k+1},1) & r_k < i \leq n \\
+\end{cases},
+\]
+where $k$ is known, $\bm{r} = (r_1,\cdots,r_k)$ denotes the set of integer valued change point locations, and $\bm{\mu} = (\mu_1,\cdots,\mu_{k+1})$ denotes the underlying means of each segment. Note that the $j$th segment is defined to be $\bm{Y}_{r_{j-1}+1 : r_j} = (Y_{r_{j-1}+1}, \cdots, Y_{r_j})$, with $r_0 = 0, r_{k+1} = n$ by convention. In addition, we assume that $\bm{r}$ and $\bm{\mu}$ are independent.\\\\
+Given a sequence of realized observations $\bm{y} = (y_1,\cdots,y_n)$ from the above data generating process, its likelihood is defined by
+\[
+L( \bm{r}, \bm{\mu} \mid \bm{y} ) = \prod_{i=1}^{k+1}\prod_{j=r_{i-1}+1}^{r_i} f(\mu_i; y_j).
+\]
+Note $f(\mu_i; y_j)$ is the likelihood of $\mu_i$ being the mean of a normal distribution with variance $1$ given the observation $y_j$.\\\\
+Then once a set of prior distributions are defined on the parameters $\bm{r}$ and $\bm{\mu}$, the goal of the Bayesian change point detection methods is to estimate the posterior distributions $p(\bm{r} \mid \bm{y})$ and $p(\bm{\mu} \mid \bm{y})$. We focus on the posterior distribution of the change point locations $p(\bm{r} \mid \bm{y})$.\\\\
+For simplicity, we assume the priors on the segment means to be
+\[
+\mu_i \sim N(m, 1), \forall i=1,\cdots,k+1, \text{and } m\in \mathbb{R}.
+\]
+As a prior on the change point locations, we assume that $\bm{r}$ follows a discrete uniform distribution over all possible configurations of the change point locations. Specifically, for any gien possible configuration $\bm{r}_c$,
+\[
+p(\bm{r}_c) = \frac{1}{\binom{n-1}{k}}.
+\]
+Note that by our specification, it is not possible for the last observation in the sequence to be a change point.\\\\
+To obtain a set of samples for $\bm{r}$ and $\bm{\mu}$, given $\left(\bm{r}^i, \bm{\mu}^i\right)$, the Gibbs sampler described in \cite{carlin1992hierarchical} generates the next sample $\left(\bm{r}^{i+1}, \bm{\mu}^{i+1}\right)$ through the following steps:
+\begin{enumerate}
+\item generate $\bm{r}^{i+1}$ from the probability mass function
+\[
+p\left(\bm{r} \mid \bm{y}, \bm{\mu^i}\right) = \frac{L\left( \bm{r}, \bm{\mu}^i \mid \bm{y} \right)}{\sum_{j=1}^{\binom{n-1}{k}} L\left( \bm{r}^j, \bm{\mu}^i \mid \bm{y} \right)},
+\]
+where $\bm{r}^j$ in the denominator denotes the $j$th configuration from the permutation of all possible configurations;
+\item generate $\bm{\mu}^{i+1}$ by
+\[
+\mu_j^{i+1} \sim N\left( \frac{m+\sum_{l=r_{j-1}+1}^{r_j^{i+1}}y_l}{r_j^{i+1} - r_{j-1}^{i+1}}, \left( 1 + r_j - r_{j-1} \right)^{-1} \right), \forall j \in \{ 1,\cdots, k+1 \}.
+\]
+\end{enumerate}
+
+% ...

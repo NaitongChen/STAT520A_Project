@@ -36,7 +36,7 @@ for i in rep:
     diff_ind = 2
     M = 2 # number of segments
     n_MCMC = 1
-    mus = np.ones(M) * np.mean(seq1)
+    mus = np.ones(M) * np.mean(means)
     vs = np.ones(M)
 
     # samples M-1 (M=mus.shape[0]) values from 0 to n-2 last index can't be a changepoint
@@ -64,7 +64,7 @@ for i in rep:
     diff_ind = 2
     M = 2 # number of segments
     n_MCMC = 3
-    mus = np.ones(M) * np.mean(seq1)
+    mus = np.ones(M) * np.mean(means)
     vs = np.ones(M)
 
     # samples M-1 (M=mus.shape[0]) values from 0 to n-2 last index can't be a changepoint
@@ -92,7 +92,7 @@ for i in rep:
     diff_ind = 2
     M = 4 # number of segments
     n_MCMC = 3
-    mus = np.ones(M) * np.mean(seq1)
+    mus = np.ones(M) * np.mean(means)
     vs = np.ones(M)
 
     # samples M-1 (M=mus.shape[0]) values from 0 to n-2 last index can't be a changepoint
@@ -120,7 +120,7 @@ for i in rep:
     diff_ind = 2
     M = 4 # number of segments
     n_MCMC = 3
-    mus = np.ones(M) * np.mean(seq1)
+    mus = np.ones(M) * np.mean(means)
     vs = np.ones(M)
 
     # samples M-1 (M=mus.shape[0]) values from 0 to n-2 last index can't be a changepoint
@@ -148,7 +148,7 @@ for i in rep:
     diff_ind = 2
     M = 3 # number of segments
     n_MCMC = 3
-    mus = np.ones(M) * np.mean(seq1)
+    mus = np.ones(M) * np.mean(means)
     vs = np.ones(M)
 
     # samples M-1 (M=mus.shape[0]) values from 0 to n-2 last index can't be a changepoint

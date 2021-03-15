@@ -1,0 +1,52 @@
+% !TEX root = ../main.tex
+
+% Exercises section
+
+\section{Exercises}
+\begin{enumerate}
+\item (\cite{lehmann2006theory} Corollary 3.5)
+\begin{lemma}\label{ex1}
+Under regularity conditions and the notations set up in \cref{sec:notation}, along with the additional assumption that $\Theta$ is finite, $\hat{\theta}$ is a consistent estimator of $\theta_0$.
+\end{lemma}
+\begin{proof}
+First let $\bm{x}$ is the set of \iid $x_1,\cdots,x_n$. Suppose there are $M$ values in $\Theta$ other than $\theta_0$. Denote these values $\theta_1,\cdots,\theta_M$. For $i\in\{1,\cdots,M\}$, define the event
+\[
+A_{in} = \{\bm{x}: L_n(\theta_0\mid\bm{x}) > L_n(\theta_i\mid\bm{x})\},
+\]
+where $L_n$ denotes the likelihood function of $n$ observations.\\\\
+By \cref{lem:1}, we know that $\lim_{n\to\infty}P_{\theta_0}(A_{in}) = 1$. Then $\lim_{n\to\infty}P_{\theta_0}(A_{1n}\cap\cdots\cap A_{Mn}) = 1$.\\\\
+In addition, we make the observation that the event, for all $n$, that $\hat{\theta}=\theta_0$ is contrained in $A_{1n}\cap\cdots\cap A_{Mn}$. Therefore
+\[
+\lim_{n\to\infty}P_{\theta_0}(\hat{\theta} = \theta_0) \leq \lim_{n\to\infty}P_{\theta_0}(A_{1n}\cap\cdots\cap A_{Mn}) = 1.
+\]
+Therefore we have that
+\[
+\lim_{n\to\infty}P_{\theta_0}(|\hat{\theta} - \theta_0|<\epsilon)=1, \forall \epsilon>0,
+\]
+and so $\hat{\theta}$ is a consistent estimator of $\theta_0$.
+\end{proof}
+\item (Lemma in this set of \href{https://ocw.mit.edu/courses/mathematics/18-443-statistics-for-applications-fall-2006/lecture-notes/lecture3.pdf}{notes})
+\begin{lemma}\label{ex2}
+Under regularity conditions and the notations set up in \cref{sec:notation}, for any $\theta\in\Theta$, $\bbE_{\theta_0}\left[ \log f(X_1;\theta) \right] \leq \bbE_{\theta_0}\left[ \log f(X_1;\theta_0) \right]$.
+\end{lemma}
+\begin{proof}
+We note that the desired inequality is equivalent to
+\[
+\bbE_{\theta_0}\left[ \log f(X_1;\theta) \right] - \bbE_{\theta_0}\left[ \log f(X_1;\theta_0) \right] \leq 0.
+\]
+We work on the LFH from above.
+\begin{align*}
+\bbE_{\theta_0}\left[ \log f(X_1;\theta) \right] - \bbE_{\theta_0}\left[ \log f(X_1;\theta_0) \right] &= \bbE_{\theta_0}\left[ \log f(X_1;\theta) - \log f(X_1;\theta_0) \right]
+= \bbE_{\theta_0}\left[ \log \left(\frac{f(X_1;\theta)}{f(X_1;\theta_0)}\right) \right].
+\end{align*}
+Using the fact that $\log x \leq x-1,\forall x\in\bbR$, we have
+\begin{align*}
+\bbE_{\theta_0}\left[ \log \left(\frac{f(X_1;\theta)}{f(X_1;\theta_0)}\right) \right] &\leq \bbE_{\theta_0}\left[ \frac{f(X_1;\theta)}{f(X_1;\theta_0)} - 1 \right]\\
+&= \int_\bbR \frac{f(x;\theta)}{f(x;\theta_0)}f(x;\theta_0)dx - 1\\
+&= \int_\bbR f(x;\theta)dx -1\\
+&= 1 - 1 = 0.
+\end{align*}
+Therefore, we conclude that for any $\theta\in\Theta$, $\bbE_{\theta_0}\left[ \log f(X_1;\theta) \right] \leq \bbE_{\theta_0}\left[ \log f(X_1;\theta_0) \right]$.
+\end{proof}
+\end{enumerate}
+Since both exercises are taken elsewhere, we comment on their significance to make up for the lack of originality. Note that both \cref{ex1,ex2} offer intuition to the consistency of MLEs from different angles. In a finite parameter space, \cref{ex1} shows the consistency of MLEs by intersecting events that $L_n(\theta_0\mid\bm{x}) > L_n(\theta_i\mid\bm{x})$ for all $\theta_i\neq\theta_0$. Then with the help of \cref{lem:2}, we establish the consistency of MLEs. This simple proof of the case of finite parameter space is a great mental picture to have when we deal with the inifinite parameter space. On the other hand, \cref{ex2} shows that $\bbE_{\theta_0}\left[ \log f(X_1;\theta) \right]$ is maximized by $\theta=\theta_0$. We also have, that $\hat{\theta}$ uniquely maximizes $\frac{1}{n}\sum_{i=1}^n \log f(x_i;\theta)$, which, by the law of large numbers, converges in probability to exactly $\bbE_{\theta_0}\left[ \log f(X_1;\theta) \right]$. Then intuitively, as two functions get closer to each other, their respective maximizers should also get closer, which again suggests consistency of MLEs.

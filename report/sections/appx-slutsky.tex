@@ -1,0 +1,113 @@
+% !TEX root = ../main.tex
+
+% Exercises section
+
+\section{Proof of Slutsky's Theorem} \label{appx:slu}
+We begin by noting that the following proofs follow closely the lecture notes from STAT 560 by Professor Ruben Zamar.
+\begin{theorem}
+If $X_n \convD X$ and $Y_n \convP c$, then $X_nY_n \convD cX$.
+\end{theorem}
+\begin{proof}
+We begin by writing $X_nY_n = X_n(Y_n-c)+cX_n$. Then, in order to achieve the final result, we need to show the following
+\begin{itemize}
+\item If $X_n \convD X$ and $Y_n \convP c$, then $X_n + Y_n \convD X + c$.
+\item If $X_n \convD X$ and $Y_n \convP 0$, then $X_nY_n \convP 0$.
+\item If $X_n \convD X$, then $cX_n \convD cX$.
+\end{itemize}
+If we have the above results, then 
+\begin{align*}
+Y_n - c \convP 0 \implies X_n(Y_n-c) \convP 0 \implies \implies X_n(Y_n-c) \convD 0 \implies X_nY_n = X_n(Y_n-c)+cX_n \convD 0 + cX = cX.
+\end{align*}
+\end{proof}
+\begin{lemma}
+If $X_n \convD X$ and $Y_n \convP c$, then $X_n + Y_n \convD X + c$.
+\end{lemma}
+\begin{proof}
+Let $t$ be a continuity point of $F_{X+c}$. Then, $t - c$ is a continuity
+point of $F_{X}$. Find $\epsilon > 0$ such that $t-c-\epsilon, t-c+\epsilon$ are both continuity points of $F_X$. Then
+\begin{align*}
+F_{X_n+Y_{n}}(t) &= P(X_n + Y_n \leq t)\\
+&= P (X_n + Y_n \leq t, |Y_n - c| < \epsilon) + P (X_n +Y_n \leq t, |Y_n - c|\geq\epsilon)\\
+&\leq P (X_n \leq t - Y_n, c -\epsilon < Y_n < c + \epsilon) + P (|Y_n - c| \geq\epsilon)\\
+&\leq P (X_n \leq t - c + \epsilon) + P (|Y_n - c| \geq \epsilon).
+\end{align*}
+\begin{align*}
+F_{X_n}(t-c-\epsilon) &= P(X_n \leq t-c-\epsilon)\\
+&= P(X_n \leq t - c - \epsilon, |Y_n - c| < \epsilon) + P (X_n \leq t - c - \epsilon, |Y_n - c| \geq \epsilon)\\
+&\leq P (X_n \leq t - c - \epsilon, c - \epsilon < Y_n < c + \epsilon) + P (|Y_n - c| \geq \epsilon)\\
+&\leq P (X_n + Y_n \leq t) + P (|Y_n - c| \geq \epsilon).
+\end{align*}
+Therefore, 
+\begin{align*}
+&\limsup_n F_{X_n+Y_n}(t) \leq \limsup_n P(X_n \leq t - c + \epsilon) + \limsup_n P(|Y_n - c| \geq\epsilon) = F_X (t - c + \epsilon).\\
+&\liminf_n F_{X_n}(t-c-\epsilon) \leq \liminf_n F_{X_n +Y_n}(t) + \liminf_n P(|Y_n - c| \geq\epsilon).
+\end{align*}
+And so
+\begin{align*}
+&\limsup_n F_{X_n+Y_n}(t)\leq F_X (t - c + \epsilon).\\
+&F_{X}(t-c-\epsilon)\leq \liminf_n F_{X_n+Y_n}(t).
+\end{align*}
+Together, we have that
+\[
+F_X (t - c - \epsilon) \leq \liminf_n F_{X_n+Y_n}(t) \leq \limsup_n F_{X_n+Y_n}(t)\leq F_X(t-c+\epsilon).
+\]
+Then
+\[
+\lim_{n\to\infty}F_{X_n+Y_n}(t) = F_X(t-c) = F_{X+c}(t).
+\]
+Therefore, if $X_n \convD X$ and $Y_n \convP c$, then $X_n + Y_n \convD X + c$.
+\end{proof}
+\begin{lemma}
+If $X_n \convD X$ and $Y_n \convP 0$, then $X_nY_n \convP 0$.\label{cover}
+\end{lemma}
+\begin{proof}
+By definition, for any $\epsilon>0$, given $\delta>0$, we can find $M$ such that $\forall n\geq M$, $X_nY_n\convP 0 \implies P(|X_nY_n|<\epsilon)>1-\delta$.\\\\
+First, we find $K$ such that $K,-K$ are continuity points of $F_X$, the CDF of $X$, and
+\[
+P(|X|\leq K) = P(-K\leq X\leq K) = F_X(K) - F_X(-K) \geq 1-\frac{\delta}{4}.
+\]
+Then
+\begin{align*}
+P(|X_n|\leq K) &= P(-K\leq X_n \leq K)\\
+&= F_{X_n}(K) - F_{X_n}(-K)\\
+&= F_X(K) - F_X(-K) + (F_{X_n}(K) - F_X(K)) - (F_{X_n}(-K)-F_{X}(-K))\\
+&= F_X(K) - F_X(-K) - (F_{X}(K) - F_{X_n}(K)) - (F_{X_n}(-K) - F_{X}(-K))
+\end{align*}
+Since $\lim_{n\to\infty}F_{X_n}(K) = F_X(K)$, $\lim_{n\to\infty}F_{X_n}(-K) = F_X(-K)$, we can find $N_1, N_2$ such that
+\[
+|F_{X_n}(K)-F_X(K)|<\frac{\delta}{8} \forall n\geq N_1, |F_{X_n}(-K)-F_X(-K)|<\frac{\delta}{8} \forall n\geq N_2.
+\]
+Take $N=\max\{N_1,N_2\}$, then for all $n\geq N$,
+\begin{align*}
+P(|X_n|\leq K) &\geq F_X(K) - F_X(-K) - |F_{X_n}(K)-F_X(K)| - |F_{X_n}(-K)-F_X(-K)|\\
+&\geq F_X(K) - F_X(-K) - 2\frac{\delta}{8}\\
+&\geq 1-\frac{\delta}{4}-\frac{\delta}{4} = 1-\frac{\delta}{2}.
+\end{align*}
+Then $P(|X_n|>K)\leq \frac{\delta}{2}, \forall n\geq N$. Since $Y_n\convP 0$, there exists $M\geq N$ such that
+\[
+P(|Y_n| < \frac{\epsilon}{K}) \geq 1-\frac{\delta}{2}, \forall n\geq M.
+\]
+Then for all $n\geq M$,
+\begin{align*}
+P(|X_nY_n|>\epsilon) &= P(|X_nY_n|>\epsilon, |X_n|\leq K) + P(|X_nY_n|>\epsilon, |X_n| > K)\\
+&\leq P(|Y_n|\geq \frac{\epsilon}{K}) + P(|X_n|>K)\\
+&\leq \frac{\delta}{2} + \frac{\delta}{2} = \delta.
+\end{align*}
+Together, we conclude that if $X_n \convD X$ and $Y_n \convP 0$, then $X_nY_n \convP 0$.
+\end{proof}
+\begin{lemma}
+If $X_n \convD X$, then $cX_n \convD cX$.
+\end{lemma}
+\begin{proof}
+Since $X_n\convD X$, we have, for any continuity point $t$ of $F_{X}$ and $c>0$,
+\[
+\lim_{n\to\infty}P(X_n<t) = P(X<t) \implies \lim_{n\to\infty}P(cX_n<ct) = P(cX<ct).
+\]
+When $c<0$,
+\begin{align*}
+\lim_{n\to\infty}P(X_n<t) = P(X<t) &\implies \lim_{n\to\infty}P(cX_n>ct) = P(cX>ct)\\
+&\implies \lim_{n\to\infty}1-P(cX_n>ct) = 1-P(cX>ct)\\
+&\implies \lim_{n\to\infty}P(cX_n<ct) = P(cX<ct).
+\end{align*}
+The case where $c=0$ is covered in \cref{cover}. Together, we have that if $X_n \convD X$, then $cX_n \convD cX$.
+\end{proof}
