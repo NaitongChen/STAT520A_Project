@@ -22,9 +22,9 @@ L( \bm{r}, \bm{\mu} \mid \bm{y} ) = \prod_{i=1}^{k+1}\prod_{j=r_{i-1}+1}^{r_i} f
 Note $f(\mu_i; y_j)$ is the likelihood of $\mu_i$ being the mean of a normal distribution with variance $1$ given the observation $y_j$.\\\\
 Then once a set of prior distributions are defined on the parameters $\bm{r}$ and $\bm{\mu}$, the goal of the Bayesian change point detection methods is to estimate the posterior distributions $p(\bm{r} \mid \bm{y})$ and $p(\bm{\mu} \mid \bm{y})$. We focus on the posterior distribution of the change point locations $p(\bm{r} \mid \bm{y})$.\\\\
 For simplicity, we assume the priors on the segment means to be
-\[
+\begin{align}\label{eqn:prior}
 \mu_i \sim N(m, 1), \forall i=1,\cdots,k+1, \text{and } m\in \mathbb{R}.
-\]
+\end{align}
 As a prior on the change point locations, we assume that $\bm{r}$ follows a discrete uniform distribution over all possible configurations of the change point locations. Specifically, for any gien possible configuration $\bm{r}_c$,
 \[
 p_{\bm{r}}(\bm{r}_c) = \frac{1}{\binom{n-1}{k}}.

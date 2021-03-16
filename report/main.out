@@ -4,4 +4,9 @@
 \BOOKMARK [2][-]{subsection.2.2}{MCMC Simulation Procedures}{section.2}% 4
 \BOOKMARK [1][-]{section.3}{Experiment}{}% 5
 \BOOKMARK [1][-]{section.4}{Discussion}{}% 6
-\BOOKMARK [1][-]{appendix.A}{Supplementary Plots}{}% 7
+\BOOKMARK [1][-]{appendix.A}{Description and Visualization of Datasets}{}% 7
+\BOOKMARK [1][-]{appendix.B}{Sample size}{}% 8
+\BOOKMARK [1][-]{appendix.C}{Trace plots of entire sequences}{}% 9
+\BOOKMARK [1][-]{appendix.D}{Trace plots after burn in}{}% 10
+\BOOKMARK [1][-]{appendix.E}{Posterior approximation}{}% 11
+\BOOKMARK [1][-]{appendix.F}{ESS and MCSE}{}% 12

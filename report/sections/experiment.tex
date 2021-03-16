@@ -3,67 +3,15 @@
 % Background section
 
 \section{Experiment}
+As mentioned in the previous sections, both the length of the entire sequence and the number of change points to be detected have an impact on the number of possible configurations of change point locations and thus the computational cost of evaluating the conditional distribution of the change point locations. Therefore, to evaluate the performance of both MCMC-based Bayesian change point detection methods, inference on five sequences of varying lengths and number of true change points are conducted using both the Gibbs and MWG approaches. The number of possible change point configurations range from $49$ to $32509$. The detailed specification and visualization of the five sequences are shown in \cref{appendix:sequences}.\\\\
+In this set of experiments, the $m$ value in \cref{eqn:prior} is set to be the average of the true segment means of each sequence specified in \cref{fig:sequences_viz}. Then inference on the change point locations of each sequence is run five times using both methods to ensure the results that we obtain are not by chance. For each of these runs, the same initial values are used for both the Gibbs sampler and the MWG sampler, although these initial values are not stored in the final output. Specifically, the initial change point locations are uniformly sampled and the initial segment means are the empirical means of the segments based on the initial change points. The Markov chains are run for one minute on the first and smallest time series, and for three minutes on all of the other four time series. Note that the relative time is measured using \texttt{time.perf\_counter} provided in Python with the time spent on storing each output sample excluded. It is worth noting that the \texttt{numba} package is used for both methods to speed up computations by translating and pre-compiling some of the \texttt{numpy} functions. The experiments are run with an Intel i5 7200U processor and 8GB of memory. Code is available at \url{https://github.com/NaitongChen/STAT520A_Project}.
+\subsection{Discussion}
+Firstly, by checking the plots shown in \cref{appendix:sample}, we confirm that the number of samples produced by MWG is indeed orders of magnitude larger than that of Gibbs except for the first sequence. However, this is justified by that evaluating the conditional distribution of the change point locations is relatively cheap as there are only $49$ possible locations of the change point.\\\\
+To further study the actual values of the samples produced, we take a look at the trace plots of each change point location. \cref{appendix:trace_full} lists the trace plots of each change point, grouped by the particular sequences, across all five runs using both methods. After visually assessing these plots, the samples generated before the Makov chains have converges are removed, and the trace plots after removing the burin-in periods are shown in \cref{appendix:trace_burnin}. It is worth noting that this visual assessment is possible because we have knowledge of the ground truth for each sequence. For example, looking at \cref{fig:truth_example} without knowing the true change point locations may lead to the conclusion that the corresponding Markov chain has converged since the beginning of the simulation.\\\\
+From these trace plots, we see that the Markov chains in both methods converge almost immediately under the first two sequences. However, for the latter three sequences, MWG more often than not requires more time than Gibbs before reaching the high density regions. This is particularly evident for the sequence with $60$ observations and $3$ change points because the shorter segments make the segment means less stable. Even after the corresponding chains have converged, it is clear under the models with a larger search space of change point locations, MWG moves between states much less frenquently than Gibbs does.\\\\
+To better understand the behaviour of the two approaches, we take a closer look at the last round of simulation on the sequence with $60$ observations and $3$ change points (\cref{fig:eg_before,fig:eg_after}). Using the same initialization, initially both MWG and Gibbs completely miss the last change point in the sequence. Indeed, putting a change point at location $30$ corresponds to a local mode in the posterior distribution of the change point locations, regardless of whether it is the corresponding change point that is given this value. As a result, with a uniform proposal on the change point locations, MWG takes a very long time to generate a sample of higher mass from the more than $30000$ possible configurations. Even after the Markov chain of MWG has converged to the region around the global mode, a similar problem is present. Since any set of change points around the global mode has a relatively high mass already, again with the uniform proposal, MWG fails at efficiently exploring this space as the probability of proposing another set of change point locations of comparable mass is low. This is clearly reflected in \cref{fig:eg_after}.\\\\
+In comparison, the Gibbs sampler gets out of the local mode much faster than MWG does. And even after the Gibbs sampler has reached the region of the global mode of the posterior, it seems to explore this high mass region a lot more thoroughly. This is because the Gibbs sampler utilizes the full conditional distribution of the change point locations conditioning on all other parameters (segment means). In this particular case, despite missing the last change point completely, it very quickly identifies the first and third change point using the more information conditional distribution of the change point locations. Once two of the three change points have been identified, the segment means are immediately updated to be much closer to the true segment means, which then informs the Gibbs sampler to ultimately get out of the local mode.\\\\
+From above, it seems like the more informative conditional distribution of the change point locations puts the Gibbs sampler at an advantage. However, we remind ourselves that the trace plots are compared iteration wise. In other words, even though MWG requires more samples to reach the region around the global mode, samples from MWG are generated much faster than those from Gibbs. We now check whether this faster sampling rate from MWG makes up for the difference in performance mentioned above.\\\\
 
-\begin{figure}[h]
-    \centering
-	\begin{subfigure}
-	    \centering
-    	\includegraphics[width=0.3\linewidth]{../../plots/Trace_M4_N60_NMCMC3_seed4_diffind2.png}
-	\end{subfigure}
-	\begin{subfigure}
-	    \centering
-    	\includegraphics[width=0.3\linewidth]{../../plots/Trace_post_burnin_M4_N60_NMCMC3_seed4_diffind2.png}
-	\end{subfigure}
-	\caption{trace before and after burn in}
-\end{figure}
 
-\begin{figure}[h]
-    \centering
-    \begin{subfigure}
-    	\centering
-        \includegraphics[width=0.3\linewidth]{../../plots/KL_M2_N50_NMCMC1_seed0_diffind2.png}
-    \end{subfigure}
-    \begin{subfigure}
-        \centering
-    	\includegraphics[width=0.3\linewidth]{../../plots/KL_M2_N20000_NMCMC3_seed0_diffind2.png}
-	\end{subfigure}
-	\begin{subfigure}
-	    \centering
-    	\includegraphics[width=0.3\linewidth]{../../plots/KL_M3_N100_NMCMC3_seed0_diffind2.png}
-	\end{subfigure}
-	\begin{subfigure}
-	    \centering
-    	\includegraphics[width=0.3\linewidth]{../../plots/KL_M4_N100_NMCMC3_seed0_diffind2.png}
-	\end{subfigure}
-	\begin{subfigure}
-	    \centering
-    	\includegraphics[width=0.3\linewidth]{../../plots/KL_M4_N60_NMCMC3_seed0_diffind2.png}
-	\end{subfigure}
-	\caption{wasserstein}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \begin{subfigure}
-    	\centering
-        \includegraphics[width=0.3\linewidth]{../../plots/Posterior_post_burnin_M2_N50_NMCMC1_seed3_diffind2.png}
-    \end{subfigure}
-    \begin{subfigure}
-        \centering
-    	\includegraphics[width=0.3\linewidth]{../../plots/Posterior_post_burnin_M2_N20000_NMCMC3_seed3_diffind2.png}
-	\end{subfigure}
-	\begin{subfigure}
-	    \centering
-    	\includegraphics[width=0.3\linewidth]{../../plots/Posterior_post_burnin_M3_N100_NMCMC3_seed3_diffind2.png}
-	\end{subfigure}
-	\begin{subfigure}
-	    \centering
-    	\includegraphics[width=0.3\linewidth]{../../plots/Posterior_post_burnin_M4_N100_NMCMC3_seed3_diffind2.png}
-	\end{subfigure}
-	\begin{subfigure}
-	    \centering
-    	\includegraphics[width=0.3\linewidth]{../../plots/Posterior_post_burnin_M4_N60_NMCMC3_seed3_diffind2.png}
-	\end{subfigure}
-	\caption{marginal}
-\end{figure}
 % ...
