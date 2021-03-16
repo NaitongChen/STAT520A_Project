@@ -2,7 +2,7 @@
 
 % Background section
 
-\section{Problem Setup}
+\section{Problem Setup}\label{sec:prob}
 Below, we start by specifying the piecewise constant model and outlining the procedures of the two MCMC methods before presenting the discussing the experimental results.
 \subsection{Pairwise Constant Model}
 Consider a sequence of random variables $(Y_1,\cdots,Y_n)$, where $\forall i \in \{1,\cdots,n\}, Y_i \in \mathbb{R}$, such that
@@ -15,17 +15,16 @@ N(\mu_{k+1},1) & r_k < i \leq n \\
 \end{cases},
 \]
 where $k$ is known, $\bm{r} = (r_1,\cdots,r_k)$ denotes the set of integer valued change point locations, and $\bm{\mu} = (\mu_1,\cdots,\mu_{k+1})$ denotes the underlying means of each segment. Note that the $j$th segment is defined to be $\bm{Y}_{r_{j-1}+1 : r_j} = (Y_{r_{j-1}+1}, \cdots, Y_{r_j})$, with $r_0 = 0, r_{k+1} = n$ by convention. In addition, we assume that $\bm{r}$ and $\bm{\mu}$ are independent and that the random variables are i.i.d. within each segment.\\\\
-Given a sequence of realized observations $\bm{y} = (y_1,\cdots,y_n)$ from the above data generating process, its likelihood is defined by
+Let $f(\mu_i; y_j)$ be the likelihood of $\mu_i$ being the mean of a normal distribution with variance $1$ given the observation $y_j$. Then given a sequence of realized observations $\bm{y} = (y_1,\cdots,y_n)$ from the above data generating process, its likelihood is defined by
 \[
 L( \bm{r}, \bm{\mu} \mid \bm{y} ) = \prod_{i=1}^{k+1}\prod_{j=r_{i-1}+1}^{r_i} f(\mu_i; y_j).
 \]
-Note $f(\mu_i; y_j)$ is the likelihood of $\mu_i$ being the mean of a normal distribution with variance $1$ given the observation $y_j$.\\\\
 Then once a set of prior distributions are defined on the parameters $\bm{r}$ and $\bm{\mu}$, the goal of the Bayesian change point detection methods is to estimate the posterior distributions $p(\bm{r} \mid \bm{y})$ and $p(\bm{\mu} \mid \bm{y})$. We focus on the posterior distribution of the change point locations $p(\bm{r} \mid \bm{y})$.\\\\
 For simplicity, we assume the priors on the segment means to be
 \begin{align}\label{eqn:prior}
 \mu_i \sim N(m, 1), \forall i=1,\cdots,k+1, \text{and } m\in \mathbb{R}.
 \end{align}
-As a prior on the change point locations, we assume that $\bm{r}$ follows a discrete uniform distribution over all possible configurations of the change point locations. Specifically, for any gien possible configuration $\bm{r}_c$,
+As a prior on the change point locations, we assume that $\bm{r}$ follows a discrete uniform distribution over all possible configurations of the change point locations. Specifically, for any given possible configuration $\bm{r}_c$,
 \[
 p_{\bm{r}}(\bm{r}_c) = \frac{1}{\binom{n-1}{k}}.
 \]
@@ -60,10 +59,9 @@ p(\bm{r} \mid \bm{y}) &= \int_{\mu_1}\cdots\int_{\mu_{k+1}} p(\bm{y} \mid \bm{\m
 &= p_{\bm{r}}(\bm{r})\left(\int_{\mu_1}p(\bm{y}_{1 : r_1} \mid \mu_1) p(\mu_1) d\mu_1\right)\cdots\left(\int_{\mu_{k+1}}p(\bm{y}_{r_k+1 : n} \mid \mu_{k+1}) p(\mu_{k+1}) d\mu_{k+1}\right)\\
 &\coloneqq p_{\bm{r}}(\bm{r})Q(1,r_1,\mu_1)\cdots Q(r_{k}+1,n,\mu_{k+1}).
 \end{align*}
-can be fully evaluated. Note that $p(\mu_i)$ denotes the prior distribution of the $i$th segment mean, and 
+can be fully evaluated. Note that $p(\mu_i)$ denotes the prior distribution of the $i$th segment mean, and the likelihood of $\mu_i$ given all observations from the $i$th segment of the sequence is denoted
 \[
-p(\bm{y}_{r_{i-1}+1:r_i} \mid \mu_i) = \prod_{j=r_{i-1}+1}^{r_i} f(\mu_i ; y_j)
+p(\bm{y}_{r_{i-1}+1:r_i} \mid \mu_i) = \prod_{j=r_{i-1}+1}^{r_i} f(\mu_i ; y_j).
 \]
-denotes the likelihood of $\mu_i$ given all observations from the $i$th segment of the sequence.\\\\
 This posterior distribution can be evaluated using Baye's rule because the $Q(\cdot)$'s are the normalizing constants of the known posterior distributions of the segment means defined in \cref{eqn:post_mean}. This allows us to more directly compare the quality of the samples generated from the two MCMC methods in the next section.
 % ...

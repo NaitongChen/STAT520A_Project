@@ -379,34 +379,44 @@ Empty plots indicate that the simulation has terminated before the Markov chain 
 	\caption{Trace plots post burn-in for the sequence with $n=60, k=3, \bm{\mu} = \{4,6,2,4\}, \bm{r} = \{15,30,45\}, T=32509$.}
 \end{figure}
 
-\section{Wasserstein distance}
+\section{Wasserstein Distance to the True Posterior}\label{appendix:wass}
 
-\begin{figure}[h]
+See below for the comparison between the two MCMC samplers on the Wasserstein distance between the approximated posterior and the true posterior. Approximate posteriors are the empirical distributions of the change point locations using all samples available post burn-in after a certain amount of time has passed since the start of the simulation (shown on the $x$-axis of the plots). Note these plots do not include simulation runs where the corresponding Markov chains have not converged by the end of the simulation period.
+
+\begin{figure}[H]
     \centering
     \begin{subfigure}{0.3\linewidth}
     	\centering
         \includegraphics[width=\linewidth]{../../plots/KL_M2_N50_NMCMC1_seed0_diffind2.png}
+        \caption{$n=50, k=1$}
     \end{subfigure}
     \begin{subfigure}{0.3\linewidth}
         \centering
     	\includegraphics[width=\linewidth]{../../plots/KL_M2_N20000_NMCMC3_seed0_diffind2.png}
+    	\caption{$n=20000, k=1$}
+    	\label{fig:wass_exception}
 	\end{subfigure}
 	\begin{subfigure}{0.3\linewidth}
 	    \centering
     	\includegraphics[width=\linewidth]{../../plots/KL_M3_N100_NMCMC3_seed0_diffind2.png}
+    	\caption{$n=100, k=2$}
 	\end{subfigure}
 	\begin{subfigure}{0.3\linewidth}
 	    \centering
     	\includegraphics[width=\linewidth]{../../plots/KL_M4_N100_NMCMC3_seed0_diffind2.png}
+    	\caption{$n=100, k=3$}
 	\end{subfigure}
 	\begin{subfigure}{0.3\linewidth}
 	    \centering
     	\includegraphics[width=\linewidth]{../../plots/KL_M4_N60_NMCMC3_seed0_diffind2.png}
+    	\caption{$n=60, k=3$}
 	\end{subfigure}
-	\caption{wasserstein}
+	\caption{Wasserstein distance between the estimated posterior distribution and the true distribution.}
 \end{figure}
 
-\section{Posterior approximation}
+\section{Marginal Posterior Approximation}\label{appendix:marginal_post}
+
+See below for a comparison between each of the MCMC sampler's marginal posterior distribution and the true posterior distribution. Note that the green lines denoted BF indicate the true marginal posterior distributions computed using brute force. The approximate marginal posteriors are the empirical distributions using all samples obtained after brun-in and before the end of the simulations. If a simulation fails to converge, the marginal posteriors are not computed. Note that the $x$-axis indicate the index of the sequence and the $y$-axis show the associated mass. A plot is made for each change point. Note also that since the majority of the mass is negligible, for the sequence with $20000$ observations, only the area around the global mode is shown.
 
 \begin{figure}[H]
     \centering
@@ -435,7 +445,7 @@ Empty plots indicate that the simulation has terminated before the Markov chain 
     	\includegraphics[width=\linewidth]{../../plots/Posterior_post_burnin_M2_N50_NMCMC1_seed4_diffind2.png}
     	\caption{simulation run \#5}
 	\end{subfigure}
-	\caption{model1: posterior approximation}
+	\caption{Marginal posterior approximations of each change point of the sequence with $n=50, k=1, \bm{\mu}=\{2,4\}, \bm{r}=\{25\}, T=49$.}
 \end{figure}
 
 \begin{figure}[H]
@@ -465,7 +475,7 @@ Empty plots indicate that the simulation has terminated before the Markov chain 
     	\includegraphics[width=\linewidth]{../../plots/Posterior_post_burnin_M2_N20000_NMCMC3_seed4_diffind2.png}
     	\caption{simulation run \#5}
 	\end{subfigure}
-	\caption{model2: posterior approximation}
+	\caption{Marginal posterior approximations of each change point of the sequence with $n=20000, k=1, \bm{\mu}=\{2,4\}, \bm{r}=\{10000\}, T=19999$.}
 \end{figure}
 
 \begin{figure}[H]
@@ -495,7 +505,7 @@ Empty plots indicate that the simulation has terminated before the Markov chain 
     	\includegraphics[width=\linewidth]{../../plots/Posterior_post_burnin_M3_N100_NMCMC3_seed4_diffind2.png}
     	\caption{simulation run \#5}
 	\end{subfigure}
-	\caption{model3: posterior approximation}
+	\caption{Marginal posterior approximations of each change point of the sequence with $n=100, k=2, \bm{\mu}=\{4,6,2\}, \bm{r}=\{30,60\}, T=4851$.}
 \end{figure}
 
 \begin{figure}[H]
@@ -525,7 +535,7 @@ Empty plots indicate that the simulation has terminated before the Markov chain 
     	\includegraphics[width=\linewidth]{../../plots/Posterior_post_burnin_M4_N100_NMCMC3_seed4_diffind2.png}
     	\caption{simulation run \#5}
 	\end{subfigure}
-	\caption{model4: posterior approximation}
+	\caption{Marginal posterior approximations of each change point of the sequence with $n=100, k=3, \bm{\mu}=\{4,6,2,4\}, \bm{r}=\{25,50,75\}, T=156849$.}
 \end{figure}
 
 \begin{figure}[H]
@@ -555,32 +565,39 @@ Empty plots indicate that the simulation has terminated before the Markov chain 
     	\includegraphics[width=\linewidth]{../../plots/Posterior_post_burnin_M4_N60_NMCMC3_seed4_diffind2.png}
     	\caption{simulation run \#5}
 	\end{subfigure}
-	\caption{model5: posterior approximation}
+	\caption{Marginal posterior approximations of each change point of the sequence with $n=60, k=3, \bm{\mu}=\{4,6,2,4\}, \bm{r}=\{15,30,45\}, T=32509$.}
 \end{figure}
 
-\section{ESS and MCSE}
+\section{Effective Sample Sizes and Monte Carlo Standard Errors}\label{appendix:ess_se}
+
+See below for the effective sample sizes (ESS) and Monte Carlo standard errors (MCSE) across all simulations for each of the sequenced using both samplers. The $x$-axes can be ignored and the $y$-axes show the values of interest as indicated in the plot of each subfigure. These values are computed using all samples obtained after brun-in and before the end of the simulations. If a simulation fails to converge, the ESS and MCSE values are not computed.
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.3\textwidth}
     	\centering
         \includegraphics[width=\linewidth]{../../plots/ess_se_M2_N50_NMCMC1_seed0_diffind2.png}
+        \caption{$n=50, k=1$}
     \end{subfigure}
     \begin{subfigure}{.3\textwidth}
         \centering
     	\includegraphics[width=\linewidth]{../../plots/ess_se_M2_N20000_NMCMC3_seed0_diffind2.png}
+    	\caption{$n=20000, k=1$}
 	\end{subfigure}
 	\begin{subfigure}{.3\textwidth}
 	    \centering
     	\includegraphics[width=\linewidth]{../../plots/ess_se_M3_N100_NMCMC3_seed0_diffind2.png}
+    	\caption{$n=100, k=2$}
 	\end{subfigure}
 	\begin{subfigure}{.3\textwidth}
 	    \centering
     	\includegraphics[width=\linewidth]{../../plots/ess_se_M4_N100_NMCMC3_seed0_diffind2.png}
+    	\caption{$n=100, k=3$}
 	\end{subfigure}
 	\begin{subfigure}{.3\textwidth}
 	    \centering
     	\includegraphics[width=\linewidth]{../../plots/ess_se_M4_N60_NMCMC3_seed0_diffind2.png}
+    	\caption{$n=60, k=3$}
 	\end{subfigure}
-	\caption{ess and se}
+	\caption{Effective sample sizes and monte carlo standard errors for each of the sequences across all simulations.}
 \end{figure}
