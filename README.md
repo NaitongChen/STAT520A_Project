@@ -1,2 +1,2 @@
 # STAT520A Term Project
-PDF report: [report/main.pdf](here)
+PDF report: (here)[report/main.pdf]
